@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#f5f3ed"/>
+<style>.sans{font-family:Arial,Helvetica,sans-serif;fill:#111}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;fill:#111}.thin{font-weight:300}.bold{font-weight:800}.orange{fill:#f05a22}.muted{fill:#777}</style>
+<text x="58" y="55" class="mono" font-size="15" letter-spacing="5">SNOWFLAKE WORLD TOUR</text><text x="397" y="55" class="mono orange" font-size="18">//</text><text x="432" y="55" class="mono" font-size="15" letter-spacing="5">BERLIN</text>
+<text x="985" y="55" class="mono" font-size="15" letter-spacing="4">28—30 SEP 2026</text>
+<text x="55" y="300" class="sans bold" font-size="145" letter-spacing="-7">BERLIN</text>
+<text x="58" y="410" class="sans orange" font-size="105">//</text><text x="165" y="410" class="sans thin" font-size="105" letter-spacing="-4">SWT26</text>
+<text x="58" y="463" class="mono" font-size="15" letter-spacing="4">MEETINGS  /  IDEAS  /  GOOD FOOD  /  AFTER HOURS</text>
+<text x="58" y="530" class="mono muted" font-size="14">j@berlin:~$</text><text x="58" y="558" class="mono" font-size="17">same business.</text><text x="58" y="584" class="mono" font-size="17">a better city.</text><rect x="219" y="567" width="9" height="20" class="orange"/>
+<g transform="translate(620 255)" fill="none" stroke="#111" stroke-width="3">
+<path d="M0 260H500"/><path d="M260 260V55M252 142h16M257 125h6M260 55V5"/><circle cx="260" cy="142" r="18" fill="#111"/>
+<path d="M75 260v-55h52v55M88 205v-18h26v18M350 260v-75h25v75M390 260v-45h32v45M438 260v-100h40v100"/>
+<path d="M105 205l-4-14 13-7 13 7-4 14"/>
+</g>
+<text x="912" y="585" class="mono muted" font-size="14" letter-spacing="3">52.5200° N  13.4050° E</text>
+<g class="mono" font-size="15" letter-spacing="3"><text x="1000" y="210">&gt; AGENDA</text><text x="1000" y="242">&gt; PLACES</text><text x="1000" y="274">&gt; PEOPLE</text><text x="1000" y="306">&gt; FOOD</text><text x="1000" y="338">&gt; DRINKS</text><text x="1000" y="370">&gt; SHOPPING</text></g>
+</svg>
