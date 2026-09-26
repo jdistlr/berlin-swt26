@@ -45,6 +45,12 @@ h1{font-size:clamp(48px,14vw,76px);letter-spacing:-.065em;line-height:.9;margin:
 .access .buttons{gap:6px!important}
 .access .button{background:transparent!important;color:#29B5E8!important;border:1px solid rgba(41,181,232,.34)!important;border-radius:6px!important;padding:7px 9px!important;font-size:11px!important;font-weight:700!important;line-height:1!important;box-shadow:none!important;transition:background .15s ease,border-color .15s ease}
 .access .button:hover,.access .button:focus{background:rgba(41,181,232,.08)!important;border-color:rgba(41,181,232,.58)!important}
+</style><style id="access-grid-fix">
+.access{grid-template-columns:44px minmax(0,1fr)!important}
+.access>img{grid-column:1;grid-row:1}
+.access>div:nth-child(2){grid-column:2;grid-row:1}
+.access>.buttons{grid-column:2!important;grid-row:2!important;margin-top:2px!important;justify-content:flex-start!important}
+@media(min-width:720px){.access{grid-template-columns:44px minmax(0,1fr)!important}.access>.buttons{grid-column:2!important;grid-row:2!important}}
 </style></head><body><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -55,7 +61,7 @@ h1{font-size:clamp(48px,14vw,76px);letter-spacing:-.065em;line-height:.9;margin:
 <li class="event" data-start="2026-09-28T12:42:00+02:00" data-end="2026-09-28T15:29:00+02:00"><time class="time">12:42</time><div class="event-main"><h3 class="event-title"><img class="logo db" src="assets/db.svg">ICE 508 → Berlin</h3><p>Bamberg → Berlin Hbf · Ankunft 15:29<br><strong>Wagen 2 · Platz 127 · Ruhebereich</strong></p><a class="action" href="https://www.bahn.de/service/zug/komfort-check-in">CHECK-IN ↗</a></div></li>
 <li class="event" data-start="2026-09-28T15:29:00+02:00" data-end="2026-09-28T16:30:00+02:00"><time class="time">15:29</time><div class="event-main"><h3 class="event-title">TITANIC Chaussee</h3><p>Check-in · Chausseestraße 30</p><a class="action" href="https://www.google.com/maps/search/?api=1&query=TITANIC+Chaussee+Berlin+Chausseestrasse+30">KARTE ↗</a></div></li>
 <li class="event" data-start="2026-09-28T18:00:00+02:00" data-end="2026-09-28T20:00:00+02:00"><time class="time">18:00</time><div class="event-main"><h3 class="event-title">Siemens Dinner</h3><p>Chateau Royal · Neustädtische Kirchstraße 3</p><a class="action" href="https://www.google.com/maps/search/?api=1&query=Chateau+Royal+Berlin+Neustaedtische+Kirchstrasse+3">KARTE ↗</a></div></li></ol></section>
-<div class="access"><img src="assets/snowflake-data-cloud-icon.svg?v=4" alt="Snowflake Conferences"><div><div class="access-label">VERANSTALTUNGSZUGANG</div><h3>Snowflake Conferences</h3><p>Agenda · Gelände · Updates · Eintrittspass</p></div><div class="buttons"><a class="button" href="https://apps.apple.com/de/app/snowflake-conferences/id6670786010">APP ↗</a><a class="button" href="https://www.snowflake.com/en/world-tour/berlin/agenda/">AGENDA ↗</a></div></div>
+<div class="access"><img src="assets/snowflake-data-cloud-icon.svg?v=5" alt="Snowflake Conferences"><div><div class="access-label">VERANSTALTUNGSZUGANG</div><h3>Snowflake Conferences</h3><p>Agenda · Gelände · Updates · Eintrittspass</p></div><div class="buttons"><a class="button" href="https://apps.apple.com/de/app/snowflake-conferences/id6670786010">APP ↗</a><a class="button" href="https://www.snowflake.com/en/world-tour/berlin/agenda/">AGENDA ↗</a></div></div>
 <section class="day" id="di"><div class="dayhead"><h2>Dienstag</h2><span class="date">29 SEP</span></div><ol class="agenda">
 <li class="event" data-start="2026-09-29T08:00:00+02:00" data-end="2026-09-29T10:00:00+02:00"><time class="time">08:00</time><div class="event-main"><h3 class="event-title">Snowflake World Tour</h3><p>Registrierung · Frühstück · Networking<br>STATION Berlin</p></div></li>
 <li class="event" data-start="2026-09-29T10:00:00+02:00" data-end="2026-09-29T11:20:00+02:00"><time class="time">10:00</time><div class="event-main"><h3 class="event-title">Opening Keynote</h3></div></li>
