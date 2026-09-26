@@ -36,7 +36,12 @@ h1{font-size:clamp(48px,14vw,76px);letter-spacing:-.065em;line-height:.9;margin:
 .event.is-current:before{content:"";position:absolute;left:50px;top:25px;width:9px;height:9px;border-radius:50%;background:var(--presence);box-shadow:0 0 0 3px rgba(223,255,0,.12),0 0 12px rgba(223,255,0,.32)}
 .event.is-current .event-main:before{content:"JETZT";border:0!important;padding:0!important;margin:0 0 7px!important;color:var(--presence)!important;background:transparent!important}
 @media(min-width:720px){.event.is-current:before{left:69px}}
-</style><style id="time-presence-color">.count{color:#DFFF00!important}</style></head><body><main class="shell">
+</style><style id="time-presence-color">.count{color:#DFFF00!important}</style><style id="blue-lock-final">
+:root{--snowflake-blue:#249EDC}
+.status-label,.access-label{color:var(--snowflake-blue)!important}
+.button{background:var(--snowflake-blue)!important;color:#fff!important;font-size:13px!important;line-height:1!important;padding:10px 13px!important;font-weight:750!important}
+.access img{background:#fff}
+</style></head><body><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
 <section class="status"><div class="status-row"><div class="status-label">JETZT</div><div class="status-line"><h2 id="nowTitle">Zwischen den Terminen</h2></div><p id="nowDetail">Berlin // Reisemodus</p></div><div class="status-row"><div class="status-label">ALS NÄCHSTES</div><div class="status-line"><h2 id="nextTitle">Forchheim → Bamberg</h2><span id="count" class="count"></span></div><p id="nextDetail">RE14 / RE20 · 12:05</p></div></section>
