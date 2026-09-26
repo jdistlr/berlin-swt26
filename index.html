@@ -30,6 +30,12 @@ h1{font-size:clamp(48px,14vw,76px);letter-spacing:-.065em;line-height:.9;margin:
 </style><style id="final-color-state">
 :root{--blue:#249EDC!important}.status-label,.access-label{color:var(--blue)!important}.button{background:var(--blue)!important}.count{color:var(--blue)!important}.critical{border-left-color:var(--blue)!important}
 .event.is-current{background:rgba(36,158,220,.075);box-shadow:inset 2px 0 0 var(--blue)}.event.is-current .event-main:before{content:"JETZT";display:inline-block;margin:0 0 7px;padding:3px 6px;border:1px solid rgba(36,158,220,.55);border-radius:4px;color:var(--blue);font:750 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em}.event.is-past{opacity:.52}.event.is-past:hover{opacity:.72}
+</style><style id="presence-dot">
+:root{--presence:#dfff00}
+.event.is-current{background:transparent!important;box-shadow:none!important;position:relative}
+.event.is-current:before{content:"";position:absolute;left:50px;top:25px;width:9px;height:9px;border-radius:50%;background:var(--presence);box-shadow:0 0 0 3px rgba(223,255,0,.12),0 0 12px rgba(223,255,0,.32)}
+.event.is-current .event-main:before{content:"JETZT";border:0!important;padding:0!important;margin:0 0 7px!important;color:var(--presence)!important;background:transparent!important}
+@media(min-width:720px){.event.is-current:before{left:69px}}
 </style></head><body><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
