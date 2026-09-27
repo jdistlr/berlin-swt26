@@ -9,22 +9,22 @@ const BERLIN_AGENDA=[
 {time:"08:30",end:"09:45",title:"Hands-on Lab 1 · From Zero to Snowflake",meta:"Aletto Hotel · Stage · bis 09:45"},
 {time:"09:05",end:"09:55",title:"Snowpipe Streaming / Interactive Tables",meta:"Track 5 · bis 09:55"}
 ]},
-{start:"2026-09-29T10:00:00+02:00",end:"2026-09-29T10:05:00+02:00",title:"Welcome",detail:"Jonah Rosenboom · Keynote Room",brand:"snowflake"},
-{start:"2026-09-29T10:05:00+02:00",end:"2026-09-29T10:40:00+02:00",title:"Opening Keynote",detail:"Keynote Room",brand:"snowflake"},
+{start:"2026-09-29T10:00:00+02:00",end:"2026-09-29T10:05:00+02:00",title:"Welcome",detail:"Jonah Rosenboom · Keynote Room",brand:"snowflake",calendar:{location:"STATION Berlin · Keynote Room, Luckenwalder Str. 4-6, 10963 Berlin",people:["Jonah Rosenboom"],organization:"Snowflake",notes:["Snowflake World Tour Berlin","Welcome / opening of the conference program","Keynote Room"]}},
+{start:"2026-09-29T10:05:00+02:00",end:"2026-09-29T10:40:00+02:00",title:"Opening Keynote",detail:"Keynote Room",brand:"snowflake",calendar:{location:"STATION Berlin · Keynote Room, Luckenwalder Str. 4-6, 10963 Berlin",people:["Christian Kleinerman"],organization:"Snowflake",notes:["Snowflake World Tour Berlin","Opening keynote on the latest innovations in data and AI and turning AI into measurable business impact.","Keynote Room"]}},
 {start:"2026-09-29T11:15:00+02:00",end:"2026-09-29T12:45:00+02:00",title:"Networking Lunch",detail:"Catering & Expo Hall · offizielles Programm bis 12:45",brand:"snowflake",interests:[
 {time:"11:30",end:"12:30",title:"AI Modernization Journey",meta:"Migrate smarter, not harder · Aletto Hotel · Stage · bis 12:30"},
-{time:"12:00",end:"12:30",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30"},
-{time:"12:00",end:"12:30",title:"CoCo · Ideas to Production",meta:"What’s New · Track 6 · bis 12:30"},
-{time:"12:15",end:"12:30",title:"CoCo → Data Product Agent",meta:"INFOMOTION Booth · bis 12:30 · Data Product Lifecycle · Governance · Agentic AI"},
+{time:"12:00",end:"12:30",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30",calendar:{location:"STATION Berlin · Track 5, Luckenwalder Str. 4-6, 10963 Berlin",track:"Track 5",people:["Christoph Wiese"],organization:"Snowflake",notes:["Snowflake World Tour Berlin","Datastream and Transformations","Streaming / data engineering session"]}},
+{time:"12:00",end:"12:30",title:"CoCo · Ideas to Production",meta:"What’s New · Track 6 · bis 12:30",calendar:{location:"STATION Berlin · Track 6, Luckenwalder Str. 4-6, 10963 Berlin",track:"Track 6",notes:["Snowflake World Tour Berlin","What’s New session","Focus: Snowflake CoCo and the path from ideas to production-ready solutions.","Context: AI-assisted development / productionization"]}},
+{time:"12:15",end:"12:30",title:"CoCo → Data Product Agent",meta:"INFOMOTION Booth · bis 12:30 · Data Product Lifecycle · Governance · Agentic AI",calendar:{location:"STATION Berlin · INFOMOTION Booth, Luckenwalder Str. 4-6, 10963 Berlin",organization:"INFOMOTION",notes:["Snowflake World Tour Berlin","Focus: Data Product Lifecycle, Governance and Agentic AI","CoCo as a Data Product Agent"]}},
 {time:"12:30",end:"14:00",title:"Lab 2 · Openflow + Snowflake AI",meta:"Aletto Hotel · Stage · separate registration",conflict:"Überschneidet Executive Briefing 13:00–13:30"},
 {time:"12:45",end:"13:15",title:"Data Products + Enterprise Data Mesh",meta:"Infomotion & Siemens Energy · Track 4 · bis 13:15",conflict:"Kollidiert mit LOS / Executive Briefing"}
 ]},
 {start:"2026-09-29T12:35:00+02:00",end:"2026-09-29T13:00:00+02:00",title:"LOS → Reception Desk",detail:"Nicht direkt zum Tiny House Village gehen.",brand:"snowflake",priority:"critical"},
 {start:"2026-09-29T13:00:00+02:00",end:"2026-09-29T13:30:00+02:00",title:"Executive Briefing",detail:"Michael Gerstlauer · Industry Field CTO — Manufacturing · Tiny House Village",brand:"snowflake",priority:"critical",moveAt:"2026-09-29T12:35:00+02:00"},
 {start:"2026-09-29T13:30:00+02:00",end:"2026-09-29T17:15:00+02:00",title:"Breakouts · Manufacturing",detail:"Sessions · Expo",brand:"snowflake",interests:[
-{time:"13:30",end:"14:00",title:"AI Agents in Manufacturing",meta:"Capgemini & Siemens Energy · Track 2 · bis 14:00"},
+{time:"13:30",end:"14:00",title:"AI Agents in Manufacturing",meta:"Capgemini & Siemens Energy · Track 2 · bis 14:00",calendar:{location:"STATION Berlin · Track 2, Luckenwalder Str. 4-6, 10963 Berlin",track:"Track 2",organization:"Capgemini & Siemens Energy",notes:["Snowflake World Tour Berlin","AI Agents in Manufacturing: Turning Industrial Signals into Intelligent Actions","Manufacturing / industrial AI agents"]}},
 {time:"15:00",end:"16:00",title:"Manufacturing Experience Tour",meta:"bis 16:00 · separate registration"},
-{time:"16:00",end:"16:30",title:"Internal Marketplace 2.0",meta:"AI-Ready Data Products · Track 6 · bis 16:30"},
+{time:"16:00",end:"16:30",title:"Internal Marketplace 2.0",meta:"AI-Ready Data Products · Track 6 · bis 16:30",calendar:{location:"STATION Berlin · Track 6, Luckenwalder Str. 4-6, 10963 Berlin",track:"Track 6",people:["Matthias Nicola"],organization:"Snowflake",notes:["Snowflake World Tour Berlin","Internal Marketplace 2.0: Sharing AI-Ready Data Products in the Organization","Data products / internal marketplace"]}},
 {time:"16:00",end:"16:30",title:"Sovereignty · Vision & Architecture",meta:"Track 3 · bis 16:30"}
 ]},
 {start:"2026-09-29T17:15:00+02:00",end:"2026-09-29T19:00:00+02:00",title:"Drinks Reception",detail:"Catering & Expo Hall · STATION Berlin · Ende 19:00",brand:"snowflake"},
