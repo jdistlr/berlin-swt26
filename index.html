@@ -395,6 +395,14 @@ html,body{max-width:100%;overflow-x:clip}
   }
   #di .interest>time{text-align:left}
 }
+</style><style id="interest-calendar-visibility-final">
+#di .interest .cal-add{display:inline-grid!important;visibility:visible!important;opacity:1!important;color:#98A1AD!important}
+#di .interest .cal-add.is-added{color:#DFFF00!important}
+@media(max-width:719px){
+  #di .interests{width:calc(100% + 68px);margin-left:-68px}
+  #di .interests summary{margin-left:68px}
+  #di .interest{grid-template-columns:50px minmax(0,1fr) 40px;gap:8px}
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -475,14 +483,14 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
    const date=baseStart.slice(0,10);
    [...details.querySelectorAll(".interest")].forEach(row=>{
      const title=(row.querySelector("strong")?.textContent||"").trim(),time=(row.querySelector("time")?.textContent||"").trim(),meta=(row.querySelector("small")?.textContent||"").trim(),conflict=(row.querySelector("em")?.textContent||"").trim();
-     if(!title||!/^\\d{2}:\\d{2}$/.test(time)||row.querySelector(".cal-add"))return;
-     let endTime=(meta.match(/bis (\\d{2}:\\d{2})/)||[])[1];
-     if(!endTime){const mins=+(meta.match(/(\\d+) Min\\./)||[])[1]||30,[hh,mm]=time.split(":").map(Number),total=hh*60+mm+mins;endTime=String(Math.floor(total/60)%24).padStart(2,"0")+":"+String(total%60).padStart(2,"0")}
+     if(!title||!/^\d{2}:\d{2}$/.test(time)||row.querySelector(".cal-add"))return;
+     let endTime=(meta.match(/bis (\d{2}:\d{2})/)||[])[1];
+     if(!endTime){const mins=+(meta.match(/(\d+) Min\./)||[])[1]||30,[hh,mm]=time.split(":").map(Number),total=hh*60+mm+mins;endTime=String(Math.floor(total/60)%24).padStart(2,"0")+":"+String(total%60).padStart(2,"0")}
      if(/Lab 2 · Openflow/i.test(title))endTime="14:00";
      if(/Manufacturing Experience Tour/i.test(title))endTime="16:00";
      const start=date+"T"+time+":00+02:00",end=date+"T"+endTime+":00+02:00";
      const b=document.createElement("button");b.className="cal-add";b.type="button";b.innerHTML=calIcon(false);b.setAttribute("aria-label","Zum Kalender hinzufügen: "+title);
-     b.onclick=()=>{const venue=/Aletto/i.test(meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(meta)?"STATION Berlin · "+((meta.match(/Track \\d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[meta,conflict?"Hinweis: "+conflict:"","BERLIN // SWT26"].filter(Boolean).join("\\n");download(title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};
+     b.onclick=()=>{const venue=/Aletto/i.test(meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(meta)?"STATION Berlin · "+((meta.match(/Track \d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[meta,conflict?"Hinweis: "+conflict:"","BERLIN // SWT26"].filter(Boolean).join("\n");download(title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};
      row.appendChild(b);
    });
  });
