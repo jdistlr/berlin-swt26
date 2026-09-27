@@ -15,6 +15,7 @@ const BERLIN_AGENDA=[
 {time:"11:30",title:"AI Modernization Journey",meta:"Migrate smarter, not harder · Aletto Hotel · Stage · bis 12:30"},
 {time:"12:00",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30"},
 {time:"12:00",title:"CoCo · Ideas to Production",meta:"What’s New · Track 6 · bis 12:30"},
+{time:"12:15",title:"CoCo → Data Product Agent",meta:"INFOMOTION Booth · bis 12:30 · Data Product Lifecycle · Governance · Agentic AI"},
 {time:"12:30",title:"Lab 2 · Openflow + Snowflake AI",meta:"Aletto Hotel · Stage · separate registration",conflict:"Überschneidet Executive Briefing 13:00–13:30"},
 {time:"12:45",title:"Data Products + Enterprise Data Mesh",meta:"Infomotion & Siemens Energy · Track 4 · bis 13:15",conflict:"Kollidiert mit LOS / Executive Briefing"}
 ]},
