@@ -449,7 +449,7 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
  const pad=n=>String(n).padStart(2,"0");
  const icsDate=d=>{d=new Date(d);return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())+"Z"};
  const esc=s=>String(s||"").replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;");
- const place=e=>{
+ const place=e=>{if(e.calendar?.location)return e.calendar.location;
    const s=(e.detail||"")+" "+(e.title||"");
    if(/TITANIC/i.test(s))return"TITANIC Chaussee Berlin, Chausseestr. 30, Berlin";
    if(/Chateau Royal/i.test(s))return"Chateau Royal, Neustädtische Kirchstr. 3, Berlin";
@@ -463,7 +463,10 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
    return"";
  };
  const notes=e=>{
-   const n=[];if(e.detail)n.push(e.detail);
+   const n=[];if(e.calendar?.notes?.length)n.push(...e.calendar.notes);else if(e.detail)n.push(e.detail);
+   if(e.calendar?.people?.length)n.push("Speaker: "+e.calendar.people.join(", "));
+   if(e.calendar?.organization)n.push("Organization: "+e.calendar.organization);
+   if(e.calendar?.track)n.push("Track: "+e.calendar.track);
    if(e.train)n.push("Zug: "+e.title,"Ankunft: "+e.train.arrival,"Wagen: "+e.train.coach,"Platz: "+e.train.seat,e.train.zone==="RUHE"?"Ruhebereich":"Bereich: "+e.train.zone);
    if(e.after)n.push(e.after.text);
    if(e.moveAt)n.push("LOS: "+new Intl.DateTimeFormat("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"}).format(new Date(e.moveAt)));
@@ -490,7 +493,7 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
      if(/Manufacturing Experience Tour/i.test(title))endTime="16:00";
      const start=date+"T"+time+":00+02:00",end=date+"T"+endTime+":00+02:00";
      const b=document.createElement("button");b.className="cal-add";b.type="button";b.innerHTML=calIcon(false);b.setAttribute("aria-label","Zum Kalender hinzufügen: "+title);
-     b.onclick=()=>{const venue=/Aletto/i.test(meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(meta)?"STATION Berlin · "+((meta.match(/Track \d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[meta,conflict?"Hinweis: "+conflict:"","BERLIN // SWT26"].filter(Boolean).join("\n");download(title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};
+     b.onclick=()=>{const base=A.find(v=>v.start===baseStart),model=base?.interests?.find(v=>v.time===time&&v.title===title),cal=model?.calendar||{};const venue=cal.location||(/Aletto/i.test(meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(meta)?"STATION Berlin · "+((meta.match(/Track \d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin");const desc=[...(cal.notes||[meta]),cal.people?.length?"Speaker: "+cal.people.join(", "):"",cal.organization?"Organization: "+cal.organization:"",cal.track?"Track: "+cal.track:"",conflict?"Hinweis: "+conflict:"","BERLIN // SWT26"].filter(Boolean).join("\n");download(title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};
      row.appendChild(b);
    });
  });
