@@ -206,6 +206,37 @@ html[data-preview] body:before{content:"SIMULATION · ICE 508 · 14:00";position
 .event.is-current:before{content:none!important;display:none!important}
 .event.is-current .event-main:before{content:none!important;display:none!important}
 #di .event.is-current{padding-left:10px!important}
+</style><style id="accessibility-gray-normalization">
+:root{
+  --secondary-readable:#AEB5BF;
+  --tertiary-readable:#98A1AD;
+}
+/* Time passing must never reduce legibility. */
+.event.is-past,
+.event.is-past:hover{opacity:1!important}
+
+/* Operational secondary copy: one readable gray across the timeline. */
+.event p,
+.arrival,
+.after-travel,
+.access p,
+.venue-head small{
+  color:var(--secondary-readable)!important;
+}
+
+/* Small metadata gets a slightly quieter but still readable token. */
+.time,
+.date,
+.daytab span,
+.interest time,
+.interest small,
+.venue-legend{
+  color:var(--tertiary-readable)!important;
+}
+
+/* Keep titles/primary information clearly above secondary copy. */
+.event-title,
+.dayhead h2{color:#F2F4F7}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
