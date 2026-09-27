@@ -1,7 +1,7 @@
 # BERLIN // SWT26
 
-![status](https://img.shields.io/badge/status-FIELD_READY-DFFF00?style=for-the-badge&labelColor=111318&color=DFFF00)
-![engineering](https://img.shields.io/badge/engineering-OVERENGINEERED_RESPONSIBLY-111318?style=for-the-badge&labelColor=29B5E8&color=111318)
+![status](https://img.shields.io/badge/status-FIELD_READY-DFFF00?style=flat-square&labelColor=111318)
+![engineering](https://img.shields.io/badge/engineering-OVERENGINEERED_RESPONSIBLY-29B5E8?style=flat-square&labelColor=111318)
 
 
 A tiny travel field system for three days in Berlin — because apparently a calendar was not enough.
