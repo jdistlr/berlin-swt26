@@ -307,6 +307,11 @@ html,body{max-width:100%;overflow-x:clip}
 .cal-add.is-added{color:#DFFF00;font-size:15px}
 .interest>div{min-width:0;position:relative;padding-right:34px}
 .interest .cal-add{position:absolute;right:-8px;top:-10px;width:40px;height:40px;margin:0;font-size:18px}
+</style><style id="calendar-icon-final">
+.cal-add{color:#98A1AD}
+.cal-add svg{width:19px;height:19px;display:block;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cal-add.is-added{color:#DFFF00}
+.interest .cal-add{top:-8px}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -349,6 +354,7 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
 </script></main><script id="calendar-export">
 (()=>{
  const A=window.BERLIN_AGENDA||[],appUrl=window.location.origin+window.location.pathname;
+ const calIcon=ok=>ok?'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7 3.5v4M17 3.5v4M3.5 9.5h17"/><path d="m8.5 15 2.2 2.2 4.8-5"/></svg>':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7 3.5v4M17 3.5v4M3.5 9.5h17"/><path d="M12 12.5v5M9.5 15h5"/></svg>';
  const pad=n=>String(n).padStart(2,"0");
  const icsDate=d=>{d=new Date(d);return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())+"Z"};
  const esc=s=>String(s||"").replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;");
@@ -378,12 +384,12 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
  };
  document.querySelectorAll(".event[data-start]").forEach(el=>{
    const e=A.find(x=>x.start===el.dataset.start),title=el.querySelector(".event-title");if(!e||!title||e.interests?.length)return;
-   const b=document.createElement("button");b.className="cal-add";b.type="button";b.textContent="＋";b.setAttribute("aria-label","Zum Kalender hinzufügen: "+e.title);
-   b.onclick=()=>{const url=e.action&&e.action.url?e.action.url:appUrl;download(e.title,e.start,e.end,notes(e),place(e),url);b.textContent="✓";b.classList.add("is-added");setTimeout(()=>{b.textContent="＋";b.classList.remove("is-added")},1800)};title.appendChild(b);
+   const b=document.createElement("button");b.className="cal-add";b.type="button";b.innerHTML=calIcon(false);b.setAttribute("aria-label","Zum Kalender hinzufügen: "+e.title);
+   b.onclick=()=>{const url=e.action&&e.action.url?e.action.url:appUrl;download(e.title,e.start,e.end,notes(e),place(e),url);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};title.appendChild(b);
  });
  document.querySelectorAll(".interests").forEach(details=>{
    const parent=details.closest(".event"),base=parent&&A.find(x=>x.start===parent.dataset.start);if(!base||!base.interests)return;
-   [...details.querySelectorAll(".interest")].forEach((row,i)=>{const x=base.interests[i];if(!x||!x.end)return;const box=row.querySelector("div");if(!box)return;const date=base.start.slice(0,10),start=date+"T"+x.time+":00+02:00",end=date+"T"+x.end+":00+02:00";const b=document.createElement("button");b.className="cal-add";b.type="button";b.textContent="＋";b.setAttribute("aria-label","Zum Kalender hinzufügen: "+x.title);b.onclick=()=>{const venue=/Aletto/i.test(x.meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(x.meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(x.meta)?"STATION Berlin · "+((x.meta.match(/Track \d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[x.meta,x.conflict?"Hinweis: "+x.conflict:"","BERLIN // SWT26"].filter(Boolean).join("\n");download(x.title,start,end,desc,venue,appUrl);b.textContent="✓";b.classList.add("is-added");setTimeout(()=>{b.textContent="＋";b.classList.remove("is-added")},1800)};box.appendChild(b)});
+   [...details.querySelectorAll(".interest")].forEach(row=>{const rowTitle=(row.querySelector("strong")?.textContent||"").trim(),rowTime=(row.querySelector("time")?.textContent||"").trim(),x=base.interests.find(v=>v.time===rowTime&&v.title===rowTitle);if(!x||!x.end)return;const box=row.querySelector("div");if(!box)return;const date=base.start.slice(0,10),start=date+"T"+x.time+":00+02:00",end=date+"T"+x.end+":00+02:00";const b=document.createElement("button");b.className="cal-add";b.type="button";b.innerHTML=calIcon(false);b.setAttribute("aria-label","Zum Kalender hinzufügen: "+x.title);b.onclick=()=>{const venue=/Aletto/i.test(x.meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(x.meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(x.meta)?"STATION Berlin · "+((x.meta.match(/Track \d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[x.meta,x.conflict?"Hinweis: "+x.conflict:"","BERLIN // SWT26"].filter(Boolean).join("\n");download(x.title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};box.appendChild(b)});
  });
 })();
 </script><script id="venue-map-controller">
