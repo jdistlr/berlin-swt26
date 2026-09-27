@@ -4,9 +4,6 @@ A tiny travel field system for three days in Berlin — because apparently a cal
 
 [Open the live field system →](https://jdistlr.github.io/berlin-swt26/)
 
-<p align="center">
-  <img src="docs/berlin-field-system.png" width="390" alt="Mobile view of BERLIN // SWT26 showing the current state, next event and travel agenda.">
-</p>
 
 ## Why
 
