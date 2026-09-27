@@ -300,6 +300,13 @@ html,body{max-width:100%;overflow-x:clip}
 @media(orientation:landscape) and (max-height:600px){
   .day{scroll-margin-top:calc(58px + env(safe-area-inset-top))}
 }
+</style><style id="calendar-micro-action">
+.event-title{position:relative}
+.cal-add{appearance:none;border:0;background:transparent;color:#8F98A4;display:inline-grid;place-items:center;width:44px;height:44px;margin:-12px -10px -12px auto;padding:0;border-radius:8px;font:500 20px/1 ui-monospace,SFMono-Regular,Menlo,monospace;cursor:pointer;flex:0 0 44px}
+.cal-add:hover,.cal-add:focus{color:#D7DCE2;background:#171B21;outline:none}
+.cal-add.is-added{color:#DFFF00;font-size:15px}
+.interest>div{min-width:0;position:relative;padding-right:34px}
+.interest .cal-add{position:absolute;right:-8px;top:-10px;width:40px;height:40px;margin:0;font-size:18px}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -339,7 +346,29 @@ const spy=new IntersectionObserver(entries=>{
   tabs.forEach(t=>t.classList.toggle("is-viewing",t.getAttribute("href")==="#"+id));const active=tabs.find(t=>t.getAttribute("href")==="#"+id);if(active){const b=active.querySelector("b");document.querySelector("#stickyDay").textContent=b?b.textContent:""}
 },{root:null,rootMargin:"-18% 0px -58% 0px",threshold:[0,.1,.25,.5,.75]});
 sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js")})();
-</script></main><script id="venue-map-controller">
+</script></main><script id="calendar-export">
+(()=>{
+ const A=window.BERLIN_AGENDA||[];
+ const pad=n=>String(n).padStart(2,"0");
+ const icsDate=d=>{d=new Date(d);return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+pad(d.getUTCHours())+pad(d.getUTCMinutes())+pad(d.getUTCSeconds())+"Z"};
+ const esc=s=>String(s||"").replace(/\\/g,"\\\\").replace(/\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;");
+ const download=(title,start,end,desc,location="")=>{
+   const body=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//BERLIN SWT26//Field System//DE","CALSCALE:GREGORIAN","METHOD:PUBLISH","BEGIN:VEVENT","UID:"+Date.now()+"-"+Math.random().toString(36).slice(2)+"@berlin-swt26","DTSTAMP:"+icsDate(new Date()),"DTSTART:"+icsDate(start),"DTEND:"+icsDate(end),"SUMMARY:"+esc(title),"DESCRIPTION:"+esc((desc?desc+" · ":"")+"BERLIN // SWT26"),location?"LOCATION:"+esc(location):"","URL:"+location.href,"END:VEVENT","END:VCALENDAR"].filter(Boolean).join("\r\n");
+   const blob=new Blob([body],{type:"text/calendar;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=title.replace(/[^a-z0-9äöüß]+/gi,"-").replace(/^-|-$/g,"")+".ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+ };
+ const events=[...document.querySelectorAll(".event[data-start]")];
+ events.forEach((el,i)=>{
+   const e=A.find(x=>x.start===el.dataset.start),title=el.querySelector(".event-title");if(!e||!title)return;
+   const b=document.createElement("button");b.className="cal-add";b.type="button";b.textContent="＋";b.setAttribute("aria-label","Zum Kalender hinzufügen: "+e.title);
+   b.onclick=()=>{download(e.title,e.start,e.end,e.detail||"");b.textContent="✓";b.classList.add("is-added");setTimeout(()=>{b.textContent="＋";b.classList.remove("is-added")},1800)};title.appendChild(b);
+ });
+ document.querySelectorAll(".interests").forEach(details=>{
+   const parent=details.closest(".event"),base=parent&&A.find(x=>x.start===parent.dataset.start);if(!base||!base.interests)return;
+   const rows=[...details.querySelectorAll(".interest")];
+   rows.forEach((row,i)=>{const x=base.interests[i];if(!x||!x.end)return;const box=row.querySelector("div");if(!box)return;const date=base.start.slice(0,10),start=date+"T"+x.time+":00+02:00",end=date+"T"+x.end+":00+02:00";const b=document.createElement("button");b.className="cal-add";b.type="button";b.textContent="＋";b.setAttribute("aria-label","Zum Kalender hinzufügen: "+x.title);b.onclick=()=>{download(x.title,start,end,x.meta||"");b.textContent="✓";b.classList.add("is-added");setTimeout(()=>{b.textContent="＋";b.classList.remove("is-added")},1800)};box.appendChild(b)});
+ });
+})();
+</script><script id="venue-map-controller">
 (()=>{
  const toggle=document.querySelector('.venue-toggle'),panel=document.getElementById('venue-map');
  if(!toggle||!panel)return;
