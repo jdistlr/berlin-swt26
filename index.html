@@ -11,7 +11,7 @@
 <meta name="twitter:title" content="BERLIN // SWT26 · Field Notes">
 <meta name="twitter:description" content="28–30 SEP 2026 · Snowflake World Tour · Meetings · Berlin After Hours">
 <title>BERLIN // SWT26 · Field Notes · 28–30 SEP 2026</title>
-<meta name="theme-color" content="#0f1115">
+<meta name="theme-color" content="#0f1115"><script id="theme-boot">(()=>{try{const v=localStorage.getItem("berlin-theme")||"auto",dark=matchMedia("(prefers-color-scheme:dark)").matches,res=v==="auto"?(dark?"dark":"light"):v;document.documentElement.dataset.theme=res;document.documentElement.dataset.themePref=v}catch(e){document.documentElement.dataset.theme="dark";document.documentElement.dataset.themePref="auto"}})();</script>
 <link rel="preload" href="data/agenda.js" as="script">
 <style>
 :root{--bg:#0f1115;--panel:#15181e;--panel2:#191d24;--text:#f3f4f6;--muted:#949ba6;--border:#2b3039;--blue:#29B5E8;--signal:#29B5E8;--radius:10px}
@@ -430,8 +430,47 @@ html,body{max-width:100%;overflow-x:clip}
     justify-self:end!important;
   }
 }
+</style><style id="theme-system-final">
+:root{
+ --theme-bg:#0D0F12;--theme-panel:#14181E;--theme-panel2:#191D24;--theme-text:#F2F4F7;
+ --theme-secondary:#AEB5BF;--theme-tertiary:#98A1AD;--theme-border:#303640;
+ --theme-blue:#29B5E8;--theme-presence:#DFFF00;--theme-action:#E6E9ED;
+ --theme-sticky:rgba(15,17,21,.90);--theme-hover:#15181E;
+}
+html[data-theme="light"]{
+ --theme-bg:#F3F4F6;--theme-panel:#FFFFFF;--theme-panel2:#F8F9FA;--theme-text:#171A1F;
+ --theme-secondary:#525B67;--theme-tertiary:#68727F;--theme-border:#D5D9DF;
+ --theme-blue:#087FA8;--theme-presence:#657A00;--theme-action:#252A31;
+ --theme-sticky:rgba(247,248,250,.92);--theme-hover:#ECEFF2;
+}
+body{background:var(--theme-bg)!important;color:var(--theme-text)!important}
+.topline,.date,.time,.daytab,.reference-label,footer,.sticky-day,.venue-legend{color:var(--theme-tertiary)!important}
+.intro,.status p,.event p,.access p,.reference p,.after-travel,.venue-head small,.interest small{color:var(--theme-secondary)!important}
+h1,.status h2,.event-title,.dayhead h2,.daytab b,.access h3,.reference h3,.interest strong{color:var(--theme-text)!important}
+.status,.access,.daytab,.venue-panel{background:var(--theme-panel)!important;border-color:var(--theme-border)!important}
+.status-row+.status-row,.event,.dayhead,.reference,footer,.interest{border-color:var(--theme-border)!important}
+.action{color:var(--theme-action)!important;border-color:var(--theme-border)!important}
+.action:hover,.daytab:hover{background:var(--theme-hover)!important}
+.status-label,.access-label,.interests summary{color:var(--theme-blue)!important}
+.critical{border-left-color:var(--theme-blue)!important}
+.event.is-current{border-left-color:var(--theme-presence)!important}
+.count,.sticky-now,.sticky-context small{color:var(--theme-presence)!important}
+.sticky-now span,.daytab.is-viewing:before{background:var(--theme-presence)!important;box-shadow:0 0 8px color-mix(in srgb,var(--theme-presence) 28%,transparent)!important}
+.stickybar{background:var(--theme-sticky)!important;border-bottom-color:var(--theme-border)!important}
+.sticky-context{border-left-color:var(--theme-border)!important}
+.cal-add{color:var(--theme-tertiary)!important}
+.cal-add:hover,.cal-add:focus{color:var(--theme-text)!important;background:var(--theme-hover)!important}
+.cal-add.is-added{color:var(--theme-presence)!important}
+.topline-right{display:inline-flex;align-items:center;gap:8px}
+.theme-toggle{appearance:none;border:0;background:transparent;color:var(--theme-tertiary);width:32px;height:32px;margin:-8px -8px -8px 0;padding:7px;border-radius:7px;display:inline-grid;place-items:center;cursor:pointer}
+.theme-toggle:hover,.theme-toggle:focus{background:var(--theme-hover);color:var(--theme-text);outline:none}
+.theme-toggle svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+html[data-theme="light"] .db{background:#fff}
+html[data-theme="light"] .button{color:#fff!important}
+html[data-theme="light"] .venue-panel,.venue-viewer{background:var(--theme-panel)!important}
+html[data-theme="light"] .venue-controls{background:var(--theme-panel2)!important}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
-<div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
+<div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
 <section class="status"><div class="status-row"><div class="status-label">JETZT</div><div class="status-line"><h2 id="nowTitle">Zwischen den Terminen</h2></div><p id="nowDetail">Berlin // Reisemodus</p></div><div class="status-row"><div class="status-label">ALS NÄCHSTES</div><div class="status-line"><h2 id="nextTitle">Forchheim → Bamberg</h2><span id="count" class="count"></span></div><p id="nextDetail">RE14 / RE20 · 12:05</p></div></section>
 <nav class="days"><a class="daytab" href="#mo"><b>MO 28</b><span>Anreise · Dinner</span></a><a class="daytab" href="#di"><b>DI 29</b><span>Snowflake</span></a><a class="daytab" href="#mi"><b>MI 30</b><span>Berlin · Rückreise</span></a></nav>
@@ -541,5 +580,15 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
  let startDist=0,startScale=1;
  viewer.addEventListener('touchstart',e=>{if(e.touches.length===2){startDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);startScale=scale}},{passive:true});
  viewer.addEventListener('touchmove',e=>{if(e.touches.length===2&&startDist){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);scale=Math.max(1,Math.min(3,startScale*d/startDist));apply()}},{passive:true});
+})();
+</script><script id="theme-controller">
+(()=>{
+ const key="berlin-theme",order=["auto","light","dark"],btn=document.getElementById("themeToggle"),mq=matchMedia("(prefers-color-scheme:dark)");
+ const meta=document.querySelector('meta[name="theme-color"]');
+ const icon=p=>p==="light"?'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></svg>':p==="dark"?'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 15.2A8 8 0 0 1 8.8 4.5 8 8 0 1 0 19.5 15.2z"/></svg>':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg>';
+ const apply=p=>{const resolved=p==="auto"?(mq.matches?"dark":"light"):p;document.documentElement.dataset.theme=resolved;document.documentElement.dataset.themePref=p;if(btn){btn.innerHTML=icon(p);btn.setAttribute("aria-label","Theme: "+(p==="auto"?"Auto":p==="light"?"Day":"Night"));btn.title=btn.getAttribute("aria-label")}if(meta)meta.content=resolved==="dark"?"#0D0F12":"#F3F4F6"};
+ let pref=localStorage.getItem(key)||"auto";apply(pref);
+ btn?.addEventListener("click",()=>{pref=order[(order.indexOf(pref)+1)%order.length];localStorage.setItem(key,pref);apply(pref)});
+ mq.addEventListener?.("change",()=>{if(pref==="auto")apply(pref)});
 })();
 </script></body></html>
