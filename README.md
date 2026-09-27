@@ -19,6 +19,5 @@ Everything else stays quiet. Berlin still needs enough cognitive bandwidth for d
 
 HTML · CSS · JavaScript · Service Worker · GitHub Actions · GitHub Pages.
 
-The most important runtime invariant is `if (interfaceFeelsBoring) leaveItAlone();`
 
 If reality changes, update the data. If the interface merely feels boring, leave it alone.
