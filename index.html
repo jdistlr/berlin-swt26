@@ -68,6 +68,20 @@ h1{font-size:clamp(48px,14vw,76px);letter-spacing:-.065em;line-height:.9;margin:
 .sticky-now span{width:7px;height:7px;border-radius:50%;background:#DFFF00;box-shadow:0 0 8px rgba(223,255,0,.28)}
 .sticky-context{min-width:0;border-left:1px solid #303640;padding-left:11px}.sticky-context strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;line-height:1.2}.sticky-context small{display:block;color:#DFFF00;font:650 9px ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:3px;white-space:nowrap}
 .sticky-day{color:#9da5af;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;white-space:nowrap}
+</style><style id="landscape-overflow-fix">
+html,body{max-width:100%;overflow-x:clip}
+.shell{max-width:calc(100vw - 32px)}
+.days,.daytab,.event,.event-main,.status-line,.sticky-inner,.sticky-context,.access,.access>div{min-width:0}
+.days{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.daytab{overflow:hidden}
+.daytab b,.daytab span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.event-title,.event p{overflow-wrap:anywhere}
+.sticky-inner{width:min(calc(100% - 28px - env(safe-area-inset-left) - env(safe-area-inset-right)),760px);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+@media (orientation:landscape) and (max-height:500px){
+  .shell{width:min(calc(100% - 48px - env(safe-area-inset-left) - env(safe-area-inset-right)),760px);max-width:none}
+  .days{gap:6px}
+  .daytab{padding:9px 10px}
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
