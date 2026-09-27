@@ -194,6 +194,18 @@ html,body{max-width:100%;overflow-x:clip}
 }
 </style><style id="preview-mode-ui">
 html[data-preview] body:before{content:"SIMULATION · ICE 508 · 14:00";position:fixed;z-index:9999;right:10px;bottom:10px;padding:5px 7px;border:1px solid rgba(223,255,0,.42);border-radius:6px;background:rgba(15,17,21,.92);color:#DFFF00;font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;pointer-events:none}
+</style><style id="current-event-line-final">
+/* Current slot: local state is a neon rail, not another dot/badge. */
+.event.is-current{
+  background:transparent!important;
+  box-shadow:none!important;
+  border-left:2px solid #DFFF00!important;
+  padding-left:10px!important;
+  position:relative;
+}
+.event.is-current:before{content:none!important;display:none!important}
+.event.is-current .event-main:before{content:none!important;display:none!important}
+#di .event.is-current{padding-left:10px!important}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
