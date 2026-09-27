@@ -1,1 +1,24 @@
-{"name":"BERLIN // SWT26","short_name":"BERLIN","start_url":"./","display":"standalone","background_color":"#0f1115","theme_color":"#0f1115","description":"Berlin Reisesystem · 28–30 Sep 2026"}
+{
+  "name": "BERLIN // SWT26",
+  "short_name": "BERLIN",
+  "description": "Private 360° travel field system for Berlin · Snowflake World Tour · 28–30 Sep 2026",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#0D0F12",
+  "theme_color": "#0D0F12",
+  "icons": [
+    {
+      "src": "./assets/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
