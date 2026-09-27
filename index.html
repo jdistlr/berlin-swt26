@@ -469,6 +469,89 @@ html[data-theme="light"] .db{background:#fff}
 html[data-theme="light"] .button{color:#fff!important}
 html[data-theme="light"] .venue-panel,.venue-viewer{background:var(--theme-panel)!important}
 html[data-theme="light"] .venue-controls{background:var(--theme-panel2)!important}
+</style><style id="day-theme-contract-final">
+/* Bridge every legacy token into the active theme. This prevents historical dark CSS leaking through. */
+:root{
+  --bg:var(--theme-bg)!important;
+  --panel:var(--theme-panel)!important;
+  --panel2:var(--theme-panel2)!important;
+  --text:var(--theme-text)!important;
+  --muted:var(--theme-secondary)!important;
+  --border:var(--theme-border)!important;
+  --blue:var(--theme-blue)!important;
+  --snowflake-blue:var(--theme-blue)!important;
+  --presence:var(--theme-presence)!important;
+  --secondary-readable:var(--theme-secondary)!important;
+  --tertiary-readable:var(--theme-tertiary)!important;
+}
+
+/* Shared components: never retain a hard-coded night surface. */
+.event:hover{background:var(--theme-hover)!important}
+.days{background:transparent!important}
+.daytab.is-viewing{background:var(--theme-panel)!important;border-color:var(--theme-tertiary)!important}
+.interests{border-color:var(--theme-border)!important}
+.interest-list,.interest{background:transparent!important}
+#di .interest strong,#di .interest em{color:var(--theme-text)!important}
+#di .interest>time{color:var(--theme-tertiary)!important}
+#di .interest small{color:var(--theme-secondary)!important}
+#di .interest .cal-add{color:var(--theme-tertiary)!important}
+#di .interest .cal-add.is-added{color:var(--theme-presence)!important}
+
+/* Operational controls and travel metadata. */
+.trainmeta span{color:var(--theme-secondary)!important;border-color:var(--theme-tertiary)!important;background:transparent!important}
+.after-travel{border-color:var(--theme-border)!important;color:var(--theme-secondary)!important}
+.after-travel a,.action{color:var(--theme-action)!important;border-color:var(--theme-border)!important;background:transparent!important}
+.after-travel a:hover,.action:hover{color:var(--theme-text)!important;border-color:var(--theme-tertiary)!important;background:var(--theme-hover)!important}
+
+/* Snowflake access stays ghost-blue in both themes. */
+.access .button{
+  background:transparent!important;
+  color:var(--theme-blue)!important;
+  border-color:color-mix(in srgb,var(--theme-blue) 42%,transparent)!important;
+}
+.access .button:hover,.access .button:focus{
+  color:var(--theme-blue)!important;
+  background:color-mix(in srgb,var(--theme-blue) 8%,transparent)!important;
+  border-color:color-mix(in srgb,var(--theme-blue) 65%,transparent)!important;
+}
+
+/* High-specificity historical rules must obey active text tokens. */
+.critical .event-title{color:var(--theme-text)!important}
+.event.is-current .event-title{color:var(--theme-text)!important}
+
+/* Venue viewer is an image surface; controls around it follow theme. */
+.venue-head,.venue-tools,.venue-legend{background:var(--theme-panel)!important}
+.venue-head{border-color:var(--theme-border)!important}
+.venue-close{color:var(--theme-tertiary)!important}
+.venue-tools button,.venue-download{
+  color:var(--theme-blue)!important;
+  border-color:color-mix(in srgb,var(--theme-blue) 45%,transparent)!important;
+  background:transparent!important;
+}
+
+/* Day-specific contrast contract. */
+html[data-theme="light"]{
+  color-scheme:light;
+}
+html[data-theme="light"] .event:hover{background:#ECEFF2!important}
+html[data-theme="light"] .daytab.is-viewing{background:#FFFFFF!important;border-color:#68727F!important}
+html[data-theme="light"] .critical{background:transparent!important}
+html[data-theme="light"] #di .interests,
+html[data-theme="light"] #di .interest-list,
+html[data-theme="light"] #di .interest{background:transparent!important}
+html[data-theme="light"] #di .interest strong,
+html[data-theme="light"] #di .interest em,
+html[data-theme="light"] .critical .event-title{color:#171A1F!important}
+html[data-theme="light"] .trainmeta span{color:#525B67!important;border-color:#7B8490!important}
+html[data-theme="light"] .after-travel a,
+html[data-theme="light"] .action{color:#252A31!important;border-color:#C7CDD5!important}
+html[data-theme="light"] .cal-add{color:#68727F!important}
+html[data-theme="light"] .access .button{color:#087FA8!important;border-color:rgba(8,127,168,.38)!important}
+html[data-theme="light"] .venue-viewer{background:#FFFFFF!important}
+html[data-theme="light"] .venue-missing{color:#68727F!important}
+
+/* Night explicitly declares its scheme too, avoiding UA control ambiguity. */
+html[data-theme="dark"]{color-scheme:dark}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
