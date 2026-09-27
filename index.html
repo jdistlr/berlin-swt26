@@ -149,6 +149,30 @@ html,body{max-width:100%;overflow-x:clip}
 .venue-tools button{border:1px solid rgba(41,181,232,.5);border-radius:7px;background:rgba(41,181,232,.035);color:#29B5E8;font:700 10px ui-monospace,SFMono-Regular,Menlo,monospace;padding:7px 10px}
 .venue-legend{padding:10px 14px 13px;color:#7f8792;font:600 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.04em}
 @media (orientation:landscape) and (max-height:600px){.venue-viewer{height:72dvh;min-height:220px}}
+</style><style id="venue-viewer-compact-final">
+.venue-missing[hidden]{display:none!important}
+.venue-viewer{
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden;
+  background:#0f1115;
+}
+.venue-viewer img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+}
+.venue-panel.is-zoomed .venue-viewer{
+  height:min(46dvh,430px)!important;
+  min-height:240px!important;
+  overflow:auto;
+  touch-action:pan-x pan-y;
+}
+.venue-tools{padding-top:10px}
+@media (orientation:landscape) and (max-height:600px){
+  .venue-panel.is-zoomed .venue-viewer{height:62dvh!important;min-height:190px!important}
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -194,13 +218,13 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
  if(!toggle||!panel)return;
  const img=panel.querySelector('img'),viewer=panel.querySelector('.venue-viewer'),missing=panel.querySelector('.venue-missing');
  let scale=1;
- const apply=()=>{img.style.width=(scale*100)+'%';toggle.textContent=panel.hidden?'VENUE MAP ↓':'VENUE MAP ↑'};
+ const apply=()=>{img.style.width=(scale*100)+'%';panel.classList.toggle('is-zoomed',scale>1.001);toggle.textContent=panel.hidden?'VENUE MAP ↓':'VENUE MAP ↑'};
  const open=()=>{panel.hidden=false;toggle.setAttribute('aria-expanded','true');apply()};
  const close=()=>{panel.hidden=true;toggle.setAttribute('aria-expanded','false');toggle.textContent='VENUE MAP ↓'};
  toggle.addEventListener('click',()=>panel.hidden?open():close());
  panel.querySelector('.venue-close').addEventListener('click',close);
  panel.querySelectorAll('[data-zoom]').forEach(b=>b.addEventListener('click',()=>{const z=b.dataset.zoom;scale=z==='reset'?1:Math.max(1,Math.min(3,scale+(z==='+'?.25:-.25)));apply();if(scale===1){viewer.scrollTop=0;viewer.scrollLeft=0}}));
- img.addEventListener('error',()=>{img.hidden=true;missing.hidden=false});
+ img.addEventListener('load',()=>{img.hidden=false;missing.hidden=true});img.addEventListener('error',()=>{img.hidden=true;missing.hidden=false});if(img.complete&&img.naturalWidth){img.hidden=false;missing.hidden=true}
  let startDist=0,startScale=1;
  viewer.addEventListener('touchstart',e=>{if(e.touches.length===2){startDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);startScale=scale}},{passive:true});
  viewer.addEventListener('touchmove',e=>{if(e.touches.length===2&&startDist){const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);scale=Math.max(1,Math.min(3,startScale*d/startDist));apply()}},{passive:true});
