@@ -552,6 +552,33 @@ html[data-theme="light"] .venue-missing{color:#68727F!important}
 
 /* Night explicitly declares its scheme too, avoiding UA control ambiguity. */
 html[data-theme="dark"]{color-scheme:dark}
+</style><style id="day-presence-accent-final">
+:root{
+  --theme-presence-mark:#DFFF00;
+  --theme-presence-text:#DFFF00;
+}
+html[data-theme="light"]{
+  /* Keep the BERLIN acid signal alive in daylight; use a separate readable ink for text. */
+  --theme-presence:#B7E000;
+  --theme-presence-mark:#B7E000;
+  --theme-presence-text:#397A16;
+}
+.count,.sticky-now,.sticky-context small{
+  color:var(--theme-presence-text)!important;
+}
+.sticky-now span,
+.daytab.is-viewing:before,
+.daytab.is-today:after{
+  background:var(--theme-presence-mark)!important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--theme-presence-mark) 32%,transparent),
+             0 0 8px color-mix(in srgb,var(--theme-presence-mark) 24%,transparent)!important;
+}
+.event.is-current{
+  border-left-color:var(--theme-presence-mark)!important;
+}
+.cal-add.is-added,#di .interest .cal-add.is-added{
+  color:var(--theme-presence-text)!important;
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
