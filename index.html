@@ -82,6 +82,19 @@ html,body{max-width:100%;overflow-x:clip}
   .days{gap:6px}
   .daytab{padding:9px 10px}
 }
+</style><style id="phone-landscape-sticky-fix">
+/* A wide phone is still a phone: never stack the day navigator below the context bar. */
+@media (orientation:landscape) and (max-height:600px){
+  .days{
+    position:static!important;
+    top:auto!important;
+    z-index:auto!important;
+    background:transparent!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    padding:0!important;
+  }
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
