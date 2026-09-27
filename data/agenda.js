@@ -4,28 +4,28 @@ const BERLIN_AGENDA=[
 {start:"2026-09-28T15:50:00+02:00",end:"2026-09-28T16:30:00+02:00",title:"TITANIC Chaussee",detail:"Check-in · Chaussee-Str. 30",brand:"base",action:{label:"KARTE ↗",url:"https://www.google.com/maps/search/?api=1&query=TITANIC+Chaussee+Berlin+Chausseestrasse+30"}},
 {start:"2026-09-28T18:00:00+02:00",end:"2026-09-28T20:00:00+02:00",title:"Siemens Dinner",detail:"Chateau Royal · Neustädtische Kirchstr. 3",brand:"dinner",moveAt:"2026-09-28T17:15:00+02:00",action:{label:"KARTE ↗",url:"https://www.google.com/maps/search/?api=1&query=Chateau+Royal+Berlin+Neustaedtische+Kirchstrasse+3"}},
 {start:"2026-09-29T08:00:00+02:00",end:"2026-09-29T10:05:00+02:00",title:"Snowflake World Tour",detail:"Registrierung · Frühstück · Networking · STATION Berlin",brand:"snowflake",moveAt:"2026-09-29T07:30:00+02:00",interests:[
-{time:"08:30",title:"CoCo AI / Data Products",meta:"Track 6 · 30 Min."},
-{time:"08:30",title:"Openflow / Near Realtime",meta:"Track 5 · 30 Min."},
-{time:"08:30",title:"Hands-on Lab 1 · From Zero to Snowflake",meta:"Aletto Hotel · Stage · bis 09:45"},
-{time:"09:05",title:"Snowpipe Streaming / Interactive Tables",meta:"Track 5 · bis 09:55"}
+{time:"08:30",end:"09:00",title:"CoCo AI / Data Products",meta:"Track 6 · 30 Min."},
+{time:"08:30",end:"09:00",title:"Openflow / Near Realtime",meta:"Track 5 · 30 Min."},
+{time:"08:30",end:"09:45",title:"Hands-on Lab 1 · From Zero to Snowflake",meta:"Aletto Hotel · Stage · bis 09:45"},
+{time:"09:05",end:"09:55",title:"Snowpipe Streaming / Interactive Tables",meta:"Track 5 · bis 09:55"}
 ]},
 {start:"2026-09-29T10:00:00+02:00",end:"2026-09-29T10:05:00+02:00",title:"Welcome",detail:"Jonah Rosenboom · Keynote Room",brand:"snowflake"},
 {start:"2026-09-29T10:05:00+02:00",end:"2026-09-29T10:40:00+02:00",title:"Opening Keynote",detail:"Keynote Room",brand:"snowflake"},
 {start:"2026-09-29T11:15:00+02:00",end:"2026-09-29T12:45:00+02:00",title:"Networking Lunch",detail:"Catering & Expo Hall · offizielles Programm bis 12:45",brand:"snowflake",interests:[
-{time:"11:30",title:"AI Modernization Journey",meta:"Migrate smarter, not harder · Aletto Hotel · Stage · bis 12:30"},
-{time:"12:00",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30"},
-{time:"12:00",title:"CoCo · Ideas to Production",meta:"What’s New · Track 6 · bis 12:30"},
-{time:"12:15",title:"CoCo → Data Product Agent",meta:"INFOMOTION Booth · bis 12:30 · Data Product Lifecycle · Governance · Agentic AI"},
-{time:"12:30",title:"Lab 2 · Openflow + Snowflake AI",meta:"Aletto Hotel · Stage · separate registration",conflict:"Überschneidet Executive Briefing 13:00–13:30"},
-{time:"12:45",title:"Data Products + Enterprise Data Mesh",meta:"Infomotion & Siemens Energy · Track 4 · bis 13:15",conflict:"Kollidiert mit LOS / Executive Briefing"}
+{time:"11:30",end:"12:30",title:"AI Modernization Journey",meta:"Migrate smarter, not harder · Aletto Hotel · Stage · bis 12:30"},
+{time:"12:00",end:"12:30",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30"},
+{time:"12:00",end:"12:30",title:"CoCo · Ideas to Production",meta:"What’s New · Track 6 · bis 12:30"},
+{time:"12:15",end:"12:30",title:"CoCo → Data Product Agent",meta:"INFOMOTION Booth · bis 12:30 · Data Product Lifecycle · Governance · Agentic AI"},
+{time:"12:30",end:"14:00",title:"Lab 2 · Openflow + Snowflake AI",meta:"Aletto Hotel · Stage · separate registration",conflict:"Überschneidet Executive Briefing 13:00–13:30"},
+{time:"12:45",end:"13:15",title:"Data Products + Enterprise Data Mesh",meta:"Infomotion & Siemens Energy · Track 4 · bis 13:15",conflict:"Kollidiert mit LOS / Executive Briefing"}
 ]},
 {start:"2026-09-29T12:35:00+02:00",end:"2026-09-29T13:00:00+02:00",title:"LOS → Reception Desk",detail:"Nicht direkt zum Tiny House Village gehen.",brand:"snowflake",priority:"critical"},
 {start:"2026-09-29T13:00:00+02:00",end:"2026-09-29T13:30:00+02:00",title:"Executive Briefing",detail:"Michael Gerstlauer · Industry Field CTO — Manufacturing · Tiny House Village",brand:"snowflake",priority:"critical",moveAt:"2026-09-29T12:35:00+02:00"},
 {start:"2026-09-29T13:30:00+02:00",end:"2026-09-29T17:15:00+02:00",title:"Breakouts · Manufacturing",detail:"Sessions · Expo",brand:"snowflake",interests:[
-{time:"13:30",title:"AI Agents in Manufacturing",meta:"Capgemini & Siemens Energy · Track 2 · bis 14:00"},
-{time:"15:00",title:"Manufacturing Experience Tour",meta:"bis 16:00 · separate registration"},
-{time:"16:00",title:"Internal Marketplace 2.0",meta:"AI-Ready Data Products · Track 6 · bis 16:30"},
-{time:"16:00",title:"Sovereignty · Vision & Architecture",meta:"Track 3 · bis 16:30"}
+{time:"13:30",end:"14:00",title:"AI Agents in Manufacturing",meta:"Capgemini & Siemens Energy · Track 2 · bis 14:00"},
+{time:"15:00",end:"16:00",title:"Manufacturing Experience Tour",meta:"bis 16:00 · separate registration"},
+{time:"16:00",end:"16:30",title:"Internal Marketplace 2.0",meta:"AI-Ready Data Products · Track 6 · bis 16:30"},
+{time:"16:00",end:"16:30",title:"Sovereignty · Vision & Architecture",meta:"Track 3 · bis 16:30"}
 ]},
 {start:"2026-09-29T17:15:00+02:00",end:"2026-09-29T19:00:00+02:00",title:"Drinks Reception",detail:"Catering & Expo Hall · STATION Berlin · Ende 19:00",brand:"snowflake"},
 {start:"2026-09-30T12:00:00+02:00",end:"2026-09-30T12:10:00+02:00",title:"Hotel-Checkout",detail:"TITANIC Chaussee",brand:"base"},
