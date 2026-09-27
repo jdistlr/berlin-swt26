@@ -11,8 +11,6 @@ const BERLIN_AGENDA=[
 ]},
 {start:"2026-09-29T10:00:00+02:00",end:"2026-09-29T10:05:00+02:00",title:"Welcome",detail:"Jonah Rosenboom · Keynote Room",brand:"snowflake"},
 {start:"2026-09-29T10:05:00+02:00",end:"2026-09-29T10:40:00+02:00",title:"Opening Keynote",detail:"Keynote Room",brand:"snowflake"},
-{start:"2026-09-29T10:40:00+02:00",end:"2026-09-29T11:00:00+02:00",title:"Customer Keynote · OTTO",detail:"Before Digital there was Data · Dr. Michael Mueller-Wuensch · Keynote Room",brand:"snowflake"},
-{start:"2026-09-29T11:00:00+02:00",end:"2026-09-29T11:15:00+02:00",title:"Keynote Fireside Chat",detail:"Dr. Michael Mueller-Wuensch · Sridhar Ramaswamy · Keynote Room",brand:"snowflake"},
 {start:"2026-09-29T11:15:00+02:00",end:"2026-09-29T12:45:00+02:00",title:"Networking Lunch",detail:"Catering & Expo Hall · offizielles Programm bis 12:45",brand:"snowflake",interests:[
 {time:"11:30",title:"AI Modernization Journey",meta:"Migrate smarter, not harder · Aletto Hotel · Stage · bis 12:30"},
 {time:"12:00",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30"},
