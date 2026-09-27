@@ -621,6 +621,16 @@ html[data-theme="light"]{
     padding-right:max(24px,env(safe-area-inset-right))!important;
   }
 }
+</style><style id="pwa-header-optical-safezone-final">
+@media (display-mode: standalone) and (orientation: portrait){
+  /* iOS overlays the transparent status bar; reserve an explicit optical band below it. */
+  .wrap{
+    padding-top:calc(36px + env(safe-area-inset-top))!important;
+  }
+  .topline{
+    margin-bottom:18px!important;
+  }
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
