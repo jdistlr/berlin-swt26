@@ -1,4 +1,4 @@
-window.BERLIN_AGENDA=[
+const BERLIN_AGENDA=[
 {start:"2026-09-28T12:05:00+02:00",end:"2026-09-28T12:20:00+02:00",title:"Forchheim → Bamberg",detail:"RE14 / RE20 · Ankunft 12:20",brand:"db",moveAt:"2026-09-28T11:50:00+02:00"},
 {start:"2026-09-28T12:42:00+02:00",end:"2026-09-28T15:29:00+02:00",title:"ICE 508 → Berlin Hbf",detail:"Bamberg → Berlin Hbf",brand:"db",moveAt:"2026-09-28T12:30:00+02:00",train:{coach:"2",seat:"127",zone:"RUHE",arrival:"15:29"},checkin:true},
 {start:"2026-09-28T15:29:00+02:00",end:"2026-09-28T16:30:00+02:00",title:"TITANIC Chaussee",detail:"Check-in · Chaussee-Str. 30",brand:"base",action:{label:"KARTE ↗",url:"https://www.google.com/maps/search/?api=1&query=TITANIC+Chaussee+Berlin+Chausseestrasse+30"}},
@@ -16,3 +16,5 @@ window.BERLIN_AGENDA=[
 {start:"2026-09-30T16:35:00+02:00",end:"2026-09-30T17:15:00+02:00",title:"ICE 601 → Bamberg",detail:"Erfurt Hbf → Bamberg",brand:"db",moveAt:"2026-09-30T16:20:00+02:00",train:{coach:"2",seat:"37",zone:"RUHE",arrival:"17:15"},checkin:true},
 {start:"2026-09-30T17:39:00+02:00",end:"2026-09-30T17:53:00+02:00",title:"RE20 / RE14 → Forchheim",detail:"Bamberg → Forchheim · Ankunft 17:53",brand:"db",moveAt:"2026-09-30T17:25:00+02:00"}
 ];
+if(typeof window!=="undefined") window.BERLIN_AGENDA=BERLIN_AGENDA;
+if(typeof module!=="undefined") module.exports=BERLIN_AGENDA;
