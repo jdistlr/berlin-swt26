@@ -377,7 +377,7 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
    const blob=new Blob([body],{type:"text/calendar;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=title.replace(/[^a-z0-9äöüß]+/gi,"-").replace(/^-|-$/g,"")+".ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
  };
  document.querySelectorAll(".event[data-start]").forEach(el=>{
-   const e=A.find(x=>x.start===el.dataset.start),title=el.querySelector(".event-title");if(!e||!title)return;
+   const e=A.find(x=>x.start===el.dataset.start),title=el.querySelector(".event-title");if(!e||!title||e.interests?.length)return;
    const b=document.createElement("button");b.className="cal-add";b.type="button";b.textContent="＋";b.setAttribute("aria-label","Zum Kalender hinzufügen: "+e.title);
    b.onclick=()=>{const url=e.action&&e.action.url?e.action.url:appUrl;download(e.title,e.start,e.end,notes(e),place(e),url);b.textContent="✓";b.classList.add("is-added");setTimeout(()=>{b.textContent="＋";b.classList.remove("is-added")},1800)};title.appendChild(b);
  });
