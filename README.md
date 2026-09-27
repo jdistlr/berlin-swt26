@@ -1,5 +1,9 @@
 # BERLIN // SWT26
 
+![status](https://img.shields.io/badge/status-FIELD_READY-DFFF00?style=flat-square&labelColor=111318)
+![engineering](https://img.shields.io/badge/engineering-OVERENGINEERED_RESPONSIBLY-29B5E8?style=flat-square&labelColor=111318)
+
+
 A tiny travel field system for three days in Berlin — because apparently a calendar was not enough.
 
 [Open the live field system →](https://jdistlr.github.io/berlin-swt26/)
@@ -20,5 +24,11 @@ Everything else is intentionally quiet. Berlin still needs enough cognitive band
 HTML · CSS · JavaScript · Service Worker · GitHub Actions · GitHub Pages.
 
 No framework, no database, no dashboard empire.
+
+One highly scientific invariant survived the entire design process:
+
+```js
+if (interfaceFeelsBoring) leaveItAlone();
+```
 
 If reality changes, update the data. If the interface merely feels boring, leave it alone.
