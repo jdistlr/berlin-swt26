@@ -1,204 +1,101 @@
 # BERLIN // SWT26
 
-> Three days. Two ICEs back. One Snowflake World Tour.  
-> Obviously this required its own operating system.
+**A tiny travel field system for Berlin · 28–30 Sep 2026.**
 
-A tiny, aggressively over-engineered travel field system for **Berlin · 28–30 Sep 2026**.
+Three days, a few trains, Snowflake World Tour and an Executive Briefing.  
+Obviously this required its own operating system.
 
-Built for the moment when the calendar is technically correct, the train leaves in 17 minutes, the conference app has the pass, someone moved the meeting point, and nobody wants to remember which carriage the seat is in.
-
-**→ [Open the field system](https://jdistlr.github.io/berlin-swt26/)**
+[**Open the field system →**](https://jdistlr.github.io/berlin-swt26/)
 
 ---
 
-## What this is
+## The idea
 
-Not a travel blog.  
-Not a conference website.  
-Not another productivity dashboard.
+This is not a travel blog and not another productivity dashboard.
 
-It is a deliberately small **context surface** answering three questions:
+It exists to answer three questions quickly:
 
-```
-WHERE AM I?
-WHAT IS NEXT?
-DO I NEED TO MOVE?
-```
+**Where am I? · What is next? · Do I need to move?**
 
-Everything else is secondary.
+The interface knows the trip, trains, hotel, dinner and conference schedule. As time moves through Berlin, it adds only the context that matters: **JETZT**, **ALS NÄCHSTES**, countdowns, **LOS**, the current day and the current event.
 
-The interface knows about trains, hotel, dinner, Snowflake sessions, the executive briefing, free windows and the way back home. It progressively changes state as time moves through the trip.
+The underlying rule is simple:
+
+> If a feature does not reduce thinking while moving through Berlin, it probably does not belong here.
 
 ---
 
-## Runtime model
+## How it works
 
 ```text
 data/agenda.js
       │
-      ├── build ──────→ static agenda HTML
+      ├─ build ───→ static agenda HTML
       │
-      └── runtime ────→ NOW / NEXT / LOS
-                         countdown
-                         current event
-                         day scroll-spy
-                         sticky context bar
+      └─ runtime ─→ JETZT · NEXT · LOS · countdown
+                    current event · scroll spy · sticky context
 ```
 
 **`data/agenda.js` is the source of truth.**
 
-The agenda itself is pre-rendered into HTML so the page arrives complete and does not rearrange itself after JavaScript wakes up.
+The agenda is pre-rendered into HTML so the page arrives complete. JavaScript adds context afterwards; it does not create the basic content.
 
-JavaScript is only allowed to add **context**, not basic content.
+That keeps the interface useful when mobile reception is terrible, JavaScript is late or Safari has opinions.
 
-That distinction became important after several aesthetically ambitious experiments were politely murdered by an iPhone viewport.
+The stack is deliberately boring: **HTML · CSS · vanilla JavaScript · IntersectionObserver · Service Worker · GitHub Actions · GitHub Pages.**
 
----
-
-## Visual grammar
-
-There are intentionally very few signals.
-
-| Signal | Meaning |
-| --- | --- |
-| White | primary information |
-| Grey | context / secondary information |
-| Snowflake Blue `#29B5E8` | Snowflake + interaction |
-| Neon `#DFFF00` | **temporal presence** — NOW / countdown |
-| DB Red | Deutsche Bahn, because Deutsche Bahn |
-
-The neon dot is intentionally rare. If it appears, your eyes should find it before your brain has finished asking the question.
-
-No gradients.  
-No dashboard rainbow.  
-No heroic cards for secondary actions.
+No framework. No database. No client-side router. No reason to install half the internet.
 
 ---
 
-## Small things that matter
+## Visual language
 
-- **NOW / NEXT** state machine
-- **LOS** when a movement time becomes more relevant than the appointment itself
-- current event marker
-- day scroll-spy: `MO 28 · DI 29 · MI 30`
-- contextual sticky toolbar after the hero leaves the viewport
-- compact train metadata: `W2 · P127 · RUHE`
-- DB Komfort Check-in shortcuts
-- Snowflake Conferences + official Berlin agenda
-- cached core assets for unreliable train internet
-- no booking codes, PINs or ticket secrets in the public page
+**White** carries primary information. **Grey** carries context. **Snowflake Blue `#29B5E8`** belongs to Snowflake and interaction. **Neon `#DFFF00`** means temporal presence: *this is where you are now*. DB keeps its own red.
+
+The neon signal is intentionally rare. If it appears, the eye should find it before the brain has finished asking the question.
+
+No gradients. No dashboard rainbow. No decorative animation. Secondary actions stay secondary.
 
 ---
 
-## Editing the trip
+## Changing the trip
 
-Do **not** hand-edit rendered agenda entries in `index.html`.
+Edit **`data/agenda.js`**, not the rendered agenda in `index.html`.
 
-Change:
-
-```text
-data/agenda.js
-```
-
-The render workflow updates the static agenda from there.
-
-A train looks roughly like this:
+A train entry looks like this:
 
 ```js
 {
   start: "2026-09-30T14:37:00+02:00",
   end:   "2026-09-30T16:12:00+02:00",
-
-  title:  "ICE 1101 → Erfurt Hbf",
+  title: "ICE 1101 → Erfurt Hbf",
   detail: "Berlin Hbf → Erfurt Hbf",
-
-  brand:  "db",
+  brand: "db",
   moveAt: "2026-09-30T14:10:00+02:00",
-
   train: {
     coach: "33",
     seat: "94",
     zone: "HANDY",
     arrival: "16:12"
   },
-
   checkin: true
 }
 ```
 
-If the data is wrong, the system is wrong.
+The build workflow turns that source into the static agenda. The browser then uses the same data for JETZT, NEXT, LOS and the time-dependent states.
+
+**If the data is wrong, the system is wrong.**
 
 ---
 
-## Design rule
+## Field rules
 
-Before adding a feature, ask:
+The page deliberately keeps booking codes, PINs and ticket secrets out of the public repository. It also deliberately has no weather widget, live-rail dashboard, embedded chatbot, CMS, login or map full of pins.
 
-> Does this reduce thinking while moving through Berlin?
+We considered enough of those to know better.
 
-If not, it probably does not belong here.
+**Status:** field-ready · feature freeze  
+**Next mutation:** reality
 
-Things deliberately **not** included:
-
-```text
-weather widget
-live rail dashboard
-embedded chatbot
-map full of pins
-CMS
-login
-twelve kinds of cards
-animated cyberpunk nonsense
-```
-
-We came dangerously close to some of these.
-
----
-
-## Stack
-
-Almost offensively small:
-
-```
-HTML
-CSS
-vanilla JavaScript
-IntersectionObserver
-Service Worker
-GitHub Actions
-GitHub Pages
-```
-
-No application framework.  
-No database.  
-No client-side router.  
-No reason to npm install half the internet.
-
----
-
-## Failure philosophy
-
-The page should remain useful when:
-
-- JavaScript is late,
-- mobile reception is terrible,
-- a CDN disappears,
-- Safari has opinions,
-- or Hannes has approximately seven seconds of available attention.
-
-Static first. Enhancement second.
-
----
-
-## Status
-
-```text
-BERLIN // SWT26
-release: field-ready
-mode: feature freeze
-next mutation: reality
-```
-
-If reality changes, update the data.
-
-If the interface merely feels boring, **leave it alone**.
+If reality changes, update the data.  
+If the interface merely feels boring, leave it alone.
