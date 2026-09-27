@@ -312,6 +312,75 @@ html,body{max-width:100%;overflow-x:clip}
 .cal-add svg{width:19px;height:19px;display:block;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .cal-add.is-added{color:#DFFF00}
 .interest .cal-add{top:-8px}
+</style><style id="interest-session-layout-final">
+#di .interests{
+  margin-top:10px;
+  padding-top:10px;
+  width:100%;
+}
+#di .interests summary{margin-bottom:4px}
+#di .interest-list{
+  display:block;
+  width:100%;
+}
+#di .interest{
+  display:grid;
+  grid-template-columns:64px minmax(0,1fr) 44px;
+  align-items:start;
+  gap:10px;
+  width:100%;
+  padding:12px 0;
+  border-bottom:1px solid #292F37;
+  box-sizing:border-box;
+}
+#di .interest:last-child{border-bottom:0}
+#di .interest>time{
+  font-size:13px!important;
+  line-height:1.35;
+  padding-top:2px;
+  color:#A5ADB8!important;
+}
+#di .interest>div{
+  position:static;
+  padding-right:0;
+  min-width:0;
+}
+#di .interest strong{
+  display:block;
+  color:#E7EAF0;
+  font-size:15px!important;
+  line-height:1.28;
+  font-weight:680;
+  letter-spacing:-.01em;
+}
+#di .interest small{
+  display:block;
+  margin-top:4px;
+  color:#AEB5BF!important;
+  font-size:13px!important;
+  line-height:1.35;
+}
+#di .interest em{
+  display:block;
+  margin-top:5px;
+  color:#C0C6CE;
+  font-size:12px;
+  line-height:1.35;
+  font-style:normal;
+}
+#di .interest .cal-add{
+  position:static!important;
+  grid-column:3;
+  grid-row:1;
+  justify-self:end;
+  width:44px;
+  height:44px;
+  margin:-8px -8px 0 0;
+}
+@media(max-width:390px){
+  #di .interest{grid-template-columns:56px minmax(0,1fr) 40px;gap:8px}
+  #di .interest strong{font-size:14px!important}
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -389,7 +458,14 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
  });
  document.querySelectorAll(".interests").forEach(details=>{
    const parent=details.closest(".event"),base=parent&&A.find(x=>x.start===parent.dataset.start);if(!base||!base.interests)return;
-   [...details.querySelectorAll(".interest")].forEach(row=>{const rowTitle=(row.querySelector("strong")?.textContent||"").trim(),rowTime=(row.querySelector("time")?.textContent||"").trim(),x=base.interests.find(v=>v.time===rowTime&&v.title===rowTitle);if(!x||!x.end)return;const box=row.querySelector("div");if(!box)return;const date=base.start.slice(0,10),start=date+"T"+x.time+":00+02:00",end=date+"T"+x.end+":00+02:00";const b=document.createElement("button");b.className="cal-add";b.type="button";b.innerHTML=calIcon(false);b.setAttribute("aria-label","Zum Kalender hinzufügen: "+x.title);b.onclick=()=>{const venue=/Aletto/i.test(x.meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(x.meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(x.meta)?"STATION Berlin · "+((x.meta.match(/Track \d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[x.meta,x.conflict?"Hinweis: "+x.conflict:"","BERLIN // SWT26"].filter(Boolean).join("\n");download(x.title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};box.appendChild(b)});
+   [...details.querySelectorAll(".interest")].forEach(row=>{
+     const rowTitle=(row.querySelector("strong")?.textContent||"").trim(),rowTime=(row.querySelector("time")?.textContent||"").trim();
+     const x=base.interests.find(v=>v.time===rowTime&&v.title.trim()===rowTitle);if(!x||!x.end)return;
+     const date=base.start.slice(0,10),start=date+"T"+x.time+":00+02:00",end=date+"T"+x.end+":00+02:00";
+     const b=document.createElement("button");b.className="cal-add";b.type="button";b.innerHTML=calIcon(false);b.setAttribute("aria-label","Zum Kalender hinzufügen: "+x.title);
+     b.onclick=()=>{const venue=/Aletto/i.test(x.meta)?"aletto Hotel Potsdamer Platz, Potsdamer Str. 145, Berlin":/INFOMOTION Booth/i.test(x.meta)?"STATION Berlin · INFOMOTION Booth":/Track/i.test(x.meta)?"STATION Berlin · "+((x.meta.match(/Track \\d+/)||[])[0]||""):"STATION Berlin, Luckenwalder Str. 4-6, Berlin";const desc=[x.meta,x.conflict?"Hinweis: "+x.conflict:"","BERLIN // SWT26"].filter(Boolean).join("\\n");download(x.title,start,end,desc,venue,appUrl);b.innerHTML=calIcon(true);b.classList.add("is-added");setTimeout(()=>{b.innerHTML=calIcon(false);b.classList.remove("is-added")},1800)};
+     row.appendChild(b);
+   });
  });
 })();
 </script><script id="venue-map-controller">
