@@ -14,7 +14,9 @@ const BERLIN_AGENDA=[
 {start:"2026-09-29T10:40:00+02:00",end:"2026-09-29T11:00:00+02:00",title:"Customer Keynote · OTTO",detail:"Before Digital there was Data · Dr. Michael Mueller-Wuensch · Keynote Room",brand:"snowflake"},
 {start:"2026-09-29T11:00:00+02:00",end:"2026-09-29T11:15:00+02:00",title:"Keynote Fireside Chat",detail:"Dr. Michael Mueller-Wuensch · Sridhar Ramaswamy · Keynote Room",brand:"snowflake"},
 {start:"2026-09-29T11:15:00+02:00",end:"2026-09-29T12:45:00+02:00",title:"Networking Lunch",detail:"Catering & Expo Hall · offizielles Programm bis 12:45",brand:"snowflake",interests:[
+{time:"11:30",title:"AI Modernization Journey",meta:"Migrate smarter, not harder · Aletto Hotel · Stage · bis 12:30"},
 {time:"12:00",title:"Every Stream Meets Its Table",meta:"Datastream and Transformations · Track 5 · bis 12:30"},
+{time:"12:00",title:"CoCo · Ideas to Production",meta:"What’s New · Track 6 · bis 12:30"},
 {time:"12:30",title:"Lab 2 · Openflow + Snowflake AI",meta:"Aletto Hotel · Stage · separate registration",conflict:"Überschneidet Executive Briefing 13:00–13:30"},
 {time:"12:45",title:"Data Products + Enterprise Data Mesh",meta:"Infomotion & Siemens Energy · Track 4 · bis 13:15",conflict:"Kollidiert mit LOS / Executive Briefing"}
 ]},
