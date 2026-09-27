@@ -586,6 +586,41 @@ html[data-theme="light"]{
 .cal-add.is-added,#di .interest .cal-add.is-added{
   color:var(--theme-presence-text)!important;
 }
+</style><style id="pwa-safe-area-final">
+/* iOS standalone: keep controls out of the status-bar/notch zone without changing Safari layout. */
+@media (display-mode: standalone){
+  body{
+    padding-left:max(0px,env(safe-area-inset-left))!important;
+    padding-right:max(0px,env(safe-area-inset-right))!important;
+  }
+  .wrap{
+    padding-top:calc(18px + env(safe-area-inset-top))!important;
+  }
+  .topline{
+    min-height:44px;
+    align-items:center;
+    margin-bottom:30px!important;
+  }
+  .topline-right{min-height:44px}
+  .theme-toggle{
+    width:44px!important;
+    height:44px!important;
+    margin:-8px -10px -8px 0!important;
+    padding:12px!important;
+  }
+  .theme-toggle svg{width:19px!important;height:19px!important}
+  .sticky-inner{
+    padding-left:max(16px,env(safe-area-inset-left))!important;
+    padding-right:max(16px,env(safe-area-inset-right))!important;
+  }
+}
+@media (display-mode: standalone) and (orientation: landscape){
+  .wrap{
+    padding-top:calc(10px + env(safe-area-inset-top))!important;
+    padding-left:max(24px,env(safe-area-inset-left))!important;
+    padding-right:max(24px,env(safe-area-inset-right))!important;
+  }
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
