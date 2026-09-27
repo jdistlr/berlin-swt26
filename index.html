@@ -403,6 +403,33 @@ html,body{max-width:100%;overflow-x:clip}
   #di .interests summary{margin-left:68px}
   #di .interest{grid-template-columns:50px minmax(0,1fr) 40px;gap:8px}
 }
+</style><style id="interest-axis-alignment-final">
+/* Expanded Snowflake sessions continue the exact parent timeline axes. */
+@media(max-width:719px){
+  #di .interests{
+    width:calc(100% + 64px)!important;
+    margin-left:-64px!important;
+  }
+  #di .interests summary{
+    margin-left:64px!important;
+  }
+  #di .interest{
+    grid-template-columns:52px minmax(0,1fr) 44px!important;
+    column-gap:12px!important;
+    padding:12px 0!important;
+  }
+  #di .interest>time{
+    text-align:left!important;
+    padding-left:0!important;
+  }
+  #di .interest>div{
+    grid-column:2!important;
+  }
+  #di .interest>.cal-add{
+    grid-column:3!important;
+    justify-self:end!important;
+  }
+}
 </style></head><body><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span>28–30 September 2026</span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
