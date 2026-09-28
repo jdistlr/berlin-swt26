@@ -657,6 +657,8 @@ html[data-theme="light"]{
     box-sizing:border-box!important;
   }
 }
+</style><style id="db-navigator-action-final">
+.dbnav-action{margin-left:6px}
 </style></head><body><div id="bootScreen" class="boot-screen" aria-hidden="true"><div class="boot-inner"><div class="boot-title">BERLIN.</div><div class="boot-kicker"><span class="boot-dot"></span>FIELD SYSTEM // BOOT</div><div class="boot-lines"><div class="boot-line"><span>FOUNDATIONS</span><b>READY</b></div><div class="boot-line"><span>CONTEXT</span><b>SYNC</b></div><div class="boot-line"><span>PASSIERSCHEIN A38</span><b>BYPASSED</b></div></div></div></div><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -779,4 +781,21 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
  btn?.addEventListener("click",()=>{pref=order[(order.indexOf(pref)+1)%order.length];localStorage.setItem(key,pref);apply(pref)});
  mq.addEventListener?.("change",()=>{if(pref==="auto")apply(pref)});
 })();
-</script><script id="boot-controller">(()=>{const b=document.getElementById("bootScreen");if(!b)return;const done=()=>{b.classList.add("is-done");setTimeout(()=>b.remove(),220)};if(document.readyState==="complete")done();else addEventListener("load",done,{once:true});setTimeout(done,1800)})();</script></body></html>
+</script><script id="boot-controller">(()=>{const b=document.getElementById("bootScreen");if(!b)return;const done=()=>{b.classList.add("is-done");setTimeout(()=>b.remove(),220)};if(document.readyState==="complete")done();else addEventListener("load",done,{once:true});setTimeout(done,1800)})();</script><script id="db-navigator-actions">
+(()=>{
+ const A=window.BERLIN_AGENDA||[];
+ const web="https://www.bahn.de/";
+ document.querySelectorAll(".event[data-start]").forEach(el=>{
+   const e=A.find(x=>x.start===el.dataset.start);if(!e?.dbNavigator)return;
+   const main=el.querySelector(".event-main");if(!main||main.querySelector(".dbnav-action"))return;
+   const a=document.createElement("a");a.className="action dbnav-action";a.href="dbnavigator://";a.textContent="DB NAVIGATOR ↗";a.setAttribute("aria-label","DB Navigator öffnen");
+   a.addEventListener("click",ev=>{
+     ev.preventDefault();
+     const started=Date.now();
+     window.location.href="dbnavigator://";
+     setTimeout(()=>{if(document.visibilityState==="visible"&&Date.now()-started<1800)window.location.href=web},900);
+   });
+   main.appendChild(a);
+ });
+})();
+</script></body></html>
