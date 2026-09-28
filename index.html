@@ -659,6 +659,13 @@ html[data-theme="light"]{
 }
 </style><style id="db-navigator-action-final">
 .dbnav-action{margin-left:6px}
+</style><style id="rail-live-final">
+.rail-live{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.rail-live>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:38px;font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.09em;color:var(--muted)}
+.rail-live>summary::-webkit-details-marker{display:none}.rail-live>summary .rl-left{display:flex;align-items:center;gap:8px}.rl-dot{width:7px;height:7px;border-radius:50%;background:#DFFF00;box-shadow:0 0 8px rgba(223,255,0,.28)}.rail-live[open]>summary{color:var(--text)}
+.rl-body{padding:8px 0 4px}.rl-status{font:650 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);padding:6px 0 10px}
+.rl-leg{display:grid;grid-template-columns:48px 1fr auto;gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:start}.rl-time{font:700 12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text)}.rl-main{min-width:0}.rl-stop{font-weight:750;font-size:14px;color:var(--text)}.rl-meta{margin-top:3px;font-size:12px;color:var(--muted);line-height:1.35}.rl-platform{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text);white-space:nowrap}.rl-delay{color:#DFFF00}.rl-changed{text-decoration:line-through;color:var(--muted);margin-right:4px}.rl-error{font-size:12px;line-height:1.45;color:var(--muted);padding:8px 0}.rl-foot{display:flex;justify-content:space-between;align-items:center;padding-top:8px;font:650 9px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted);letter-spacing:.06em}
+html[data-theme="light"] .rl-dot{background:#B7E000}.rail-live .action{font-size:10px}
 </style></head><body><div id="bootScreen" class="boot-screen" aria-hidden="true"><div class="boot-inner"><div class="boot-title">BERLIN.</div><div class="boot-kicker"><span class="boot-dot"></span>FIELD SYSTEM // BOOT</div><div class="boot-lines"><div class="boot-line"><span>FOUNDATIONS</span><b>READY</b></div><div class="boot-line"><span>CONTEXT</span><b>SYNC</b></div><div class="boot-line"><span>PASSIERSCHEIN A38</span><b>BYPASSED</b></div></div></div></div><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -797,5 +804,68 @@ sections.forEach(s=>spy.observe(s));if("serviceWorker"in navigator)navigator.ser
    });
    main.appendChild(a);
  });
+})();
+</script><script id="rail-live-controller">
+(()=>{
+ const A=window.BERLIN_AGENDA||[], API="https://v6.db.transport.rest";
+ const cache=new Map(), timers=new Map();
+ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const hm=s=>s?new Intl.DateTimeFormat("de-DE",{hour:"2-digit",minute:"2-digit",hour12:false,timeZone:"Europe/Berlin"}).format(new Date(s)):"–";
+ const mins=s=>Math.round((s||0)/60);
+ const norm=s=>String(s||"").replace(/\s+/g,"").toUpperCase();
+ function pick(data,cfg){
+   const js=data?.journeys||[];
+   let best=null,score=-1e9;
+   for(const j of js){
+     const legs=(j.legs||[]).filter(l=>l.line);
+     const names=legs.map(l=>norm(l.line?.name));
+     let s=0;
+     for(const want of cfg.lines||[]) if(names.some(n=>n.includes(norm(want)))) s+=20;
+     const dep=legs[0]?.plannedDeparture||legs[0]?.departure;
+     if(dep) s-=Math.abs(new Date(dep)-new Date(cfg.departure))/60000;
+     if(s>score){score=s;best=j}
+   }
+   return best;
+ }
+ function render(j){
+   const legs=(j?.legs||[]).filter(l=>l.line);
+   if(!legs.length) throw new Error("Keine passende Verbindung gefunden");
+   return legs.map(l=>{
+     const delay=mins(l.departureDelay), changed=l.platform&&l.plannedPlatform&&l.platform!==l.plannedPlatform;
+     return '<div class="rl-leg"><div class="rl-time">'+esc(hm(l.departure||l.plannedDeparture))+'</div><div class="rl-main"><div class="rl-stop">'+esc(l.origin?.name||"")+'</div><div class="rl-meta">'+esc(l.line?.name||"")+(delay?' · <span class="rl-delay">'+(delay>0?"+":"")+delay+' Min.</span>':' · pünktlich')+'</div></div><div class="rl-platform">'+(changed?'<span class="rl-changed">Gl. '+esc(l.plannedPlatform)+'</span>':'')+(l.platform?'Gl. '+esc(l.platform):'')+'</div></div>'+
+       '<div class="rl-leg"><div class="rl-time">'+esc(hm(l.arrival||l.plannedArrival))+'</div><div class="rl-main"><div class="rl-stop">'+esc(l.destination?.name||"")+'</div><div class="rl-meta">Ankunft'+(mins(l.arrivalDelay)?' · <span class="rl-delay">'+(mins(l.arrivalDelay)>0?"+":"")+mins(l.arrivalDelay)+' Min.</span>':' · pünktlich')+'</div></div><div class="rl-platform">'+(l.arrivalPlatform?'Gl. '+esc(l.arrivalPlatform):(l.platform&&l.destination?.name?"":""))+'</div></div>';
+   }).join("");
+ }
+ async function load(details,cfg,force=false){
+   const body=details.querySelector(".rl-body"); if(!body)return;
+   const hit=cache.get(cfg.id);
+   if(!force&&hit&&Date.now()-hit.at<55000){body.innerHTML=hit.html;return}
+   body.innerHTML='<div class="rl-status">LIVE-DATEN WERDEN GELADEN …</div>';
+   try{
+     const q=new URLSearchParams({from:cfg.from,to:cfg.to,departure:cfg.departure,results:"4",stopovers:"false"});
+     const r=await fetch(API+"/journeys?"+q,{cache:"no-store"});
+     if(!r.ok)throw new Error("HTTP "+r.status);
+     const data=await r.json(), j=pick(data,cfg);
+     const html=render(j)+'<div class="rl-foot"><span>DB LIVE · '+esc(new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"}))+'</span><span>↻ 60 SEC</span></div>';
+     cache.set(cfg.id,{at:Date.now(),html}); body.innerHTML=html;
+   }catch(e){
+     body.innerHTML='<div class="rl-error">LIVE-DATEN GERADE NICHT VERFÜGBAR.<br>Statische Reiseplanung bleibt unverändert.</div>';
+   }
+ }
+ function attach(){
+   document.querySelectorAll(".event[data-start]").forEach(el=>{
+     const e=A.find(x=>x.start===el.dataset.start); if(!e?.liveRail||el.querySelector(".rail-live"))return;
+     const main=el.querySelector(".event-main"); if(!main)return;
+     const d=document.createElement("details");d.className="rail-live";
+     d.innerHTML='<summary><span class="rl-left"><span class="rl-dot"></span>LIVE · REISESTATUS</span><span>⌄</span></summary><div class="rl-body"><div class="rl-status">ÖFFNEN FÜR ECHTZEITDATEN</div></div>';
+     d.addEventListener("toggle",()=>{
+       const id=e.liveRail.id;
+       if(d.open){load(d,e.liveRail);if(!timers.has(id))timers.set(id,setInterval(()=>{if(d.open&&!document.hidden)load(d,e.liveRail,true)},60000))}
+       else if(timers.has(id)){clearInterval(timers.get(id));timers.delete(id)}
+     });
+     main.appendChild(d);
+   });
+ }
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",()=>setTimeout(attach,0));else setTimeout(attach,0);
 })();
 </script></body></html>
