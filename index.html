@@ -662,6 +662,23 @@ html[data-theme="light"]{
 </style><style id="train-action-row-final">
 .train-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
 .train-actions .action,.train-actions .dbnav-action{margin:0}
+</style><style id="daytab-state-semantics-final">
+/* Acid dot means calendar TODAY only. Scroll/view state must never impersonate today. */
+.daytab.is-viewing:before{display:none!important;content:none!important}
+.daytab.is-today:after{
+  display:block!important;
+  content:""!important;
+  position:absolute;
+  right:9px;
+  top:9px;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--theme-presence-mark)!important;
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--theme-presence-mark) 32%,transparent),
+             0 0 8px color-mix(in srgb,var(--theme-presence-mark) 24%,transparent)!important;
+}
+.daytab.is-today:not(.is-viewing):after{display:block!important}
 </style></head><body><div id="bootScreen" class="boot-screen" aria-hidden="true"><div class="boot-inner"><div class="boot-title">BERLIN.</div><div class="boot-kicker"><span class="boot-dot"></span>FIELD SYSTEM // BOOT</div><div class="boot-lines"><div class="boot-line"><span>FOUNDATIONS</span><b>READY</b></div><div class="boot-line"><span>CONTEXT</span><b>SYNC</b></div><div class="boot-line"><span>PASSIERSCHEIN A38</span><b>BYPASSED</b></div></div></div></div><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
