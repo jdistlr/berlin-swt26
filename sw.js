@@ -1,4 +1,4 @@
-const CACHE="berlin-field-v7";
+const CACHE="berlin-field-v8";
 const ASSETS=[
   "./data/agenda.js",
   "./assets/db.svg",
