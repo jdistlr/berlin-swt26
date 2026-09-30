@@ -679,6 +679,73 @@ html[data-theme="light"]{
              0 0 8px color-mix(in srgb,var(--theme-presence-mark) 24%,transparent)!important;
 }
 .daytab.is-today:not(.is-viewing):after{display:block!important}
+</style><style id="berlin-route-collapse-final">
+.u-sign{
+  width:26px;height:26px;flex:0 0 26px;
+  display:inline-grid;place-items:center;
+  background:#0067B1;color:#fff;
+  border-radius:3px;
+  font:900 19px/1 Arial,Helvetica,sans-serif;
+  letter-spacing:-.03em;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);
+}
+.route-group{list-style:none;margin:14px 0 4px;padding:0}
+.route-collapse{
+  border:1px solid var(--theme-border,var(--border));
+  border-radius:10px;
+  background:var(--theme-panel,var(--panel));
+  overflow:hidden;
+}
+.route-collapse>summary{
+  list-style:none;cursor:pointer;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;
+  gap:4px 12px;align-items:center;
+  padding:14px 15px;
+  user-select:none;-webkit-user-select:none;
+}
+.route-collapse>summary::-webkit-details-marker{display:none}
+.route-kicker{
+  grid-column:1;
+  color:var(--theme-blue,var(--blue));
+  font:750 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.14em;
+}
+.route-collapse>summary strong{
+  grid-column:1;
+  font-size:15px;line-height:1.25;
+  color:var(--theme-text,var(--text));
+}
+.route-toggle{
+  grid-column:2;grid-row:1/3;
+  align-self:center;
+  color:var(--theme-tertiary,var(--muted));
+  font:700 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.1em;
+}
+.route-toggle:after{content:"  ▾";font-size:11px}
+.route-collapse:not([open]) .route-toggle:after{content:"  ▸"}
+.route-steps{list-style:none;margin:0;padding:0 15px 2px;border-top:1px solid var(--theme-border,var(--border))}
+.route-steps .event:last-child{border-bottom:0}
+.route-steps .event{padding-left:0!important}
+.event.hard-cut{
+  margin-top:12px;
+  border-top:1px solid color-mix(in srgb,var(--theme-presence-mark,#DFFF00) 38%,transparent);
+  border-bottom:1px solid color-mix(in srgb,var(--theme-presence-mark,#DFFF00) 38%,transparent);
+  border-left:3px solid var(--theme-presence-mark,#DFFF00)!important;
+  padding:16px 10px!important;
+}
+.event.hard-cut .event-title{color:var(--theme-text,var(--text))!important}
+.event.hard-cut .event-main:after{
+  content:"FIXPUNKT · NICHT EINKLAPPBAR";
+  display:block;margin-top:7px;
+  color:var(--theme-presence-text,#DFFF00);
+  font:750 9px ui-monospace,SFMono-Regular,Menlo,monospace;
+  letter-spacing:.1em;
+}
+@media(max-width:460px){
+  .route-steps{padding-left:10px;padding-right:10px}
+  .route-steps .event{grid-template-columns:50px 1fr;gap:10px}
+}
 </style></head><body><div id="bootScreen" class="boot-screen" aria-hidden="true"><div class="boot-inner"><div class="boot-title">BERLIN.</div><div class="boot-kicker"><span class="boot-dot"></span>FIELD SYSTEM // BOOT</div><div class="boot-lines"><div class="boot-line"><span>FOUNDATIONS</span><b>READY</b></div><div class="boot-line"><span>CONTEXT</span><b>SYNC</b></div><div class="boot-line"><span>PASSIERSCHEIN A38</span><b>BYPASSED</b></div></div></div></div><div id="heroSentinel"></div><header id="stickyBar" class="stickybar" aria-hidden="true"><div class="sticky-inner"><button id="stickyNow" class="sticky-now"><span></span><b id="stickyMode">JETZT</b></button><div class="sticky-context"><strong id="stickyTitle">Berlin</strong><small id="stickyCount"></small></div><div id="stickyDay" class="sticky-day">MO 28</div></div></header><main class="shell">
 <div class="topline"><span>Reisesystem</span><span class="topline-right"><span>28–30 September 2026</span><button id="themeToggle" class="theme-toggle" type="button" aria-label="Theme: Auto" title="Theme: Auto"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15z"/></svg></button></span></div>
 <h1>Berlin.</h1><p class="intro">Snowflake World Tour, Executive Briefing und Berlin. Eine kompakte operative Agenda für unterwegs.</p>
@@ -703,14 +770,15 @@ html[data-theme="light"]{
 <li class="event" data-start="2026-09-29T17:15:00+02:00" data-end="2026-09-29T19:00:00+02:00"><time class="time">17:15</time><div class="event-main"><h3 class="event-title">Drinks Reception</h3><p>Catering & Expo Hall · STATION Berlin · Ende 19:00</p></div></li>
 </ol></section><section class="day" id="mi"><div class="dayhead"><h2>Mittwoch</h2><span class="date">30 SEP</span></div><ol class="agenda">
 <li class="event " data-start="2026-09-30T11:50:00+02:00" data-end="2026-09-30T12:00:00+02:00"><time class="time">11:50</time><div class="event-main"><h3 class="event-title">Koffer · Berlin Hbf</h3><p>Schließfach 1. OG · Bereich Gleis 13/14 · erledigt</p></div></li>
-<li class="event " data-start="2026-09-30T12:00:00+02:00" data-end="2026-09-30T12:07:00+02:00"><time class="time">12:00</time><div class="event-main"><h3 class="event-title">U5 → Bundestag</h3><p>Richtung Hönow · 1 Station</p></div></li>
+<li class="route-group"><details class="route-collapse" open><summary><span class="route-kicker">BERLIN-FINALE</span><strong>12:00–13:35 · 7 ETAPPEN</strong><span class="route-toggle">ROUTE</span></summary><ol class="route-steps"><li class="event " data-start="2026-09-30T12:00:00+02:00" data-end="2026-09-30T12:07:00+02:00"><time class="time">12:00</time><div class="event-main"><h3 class="event-title"><span class="u-sign" aria-hidden="true">U</span>U5 → Bundestag</h3><p>Richtung Hönow · 1 Station</p></div></li>
 <li class="event " data-start="2026-09-30T12:07:00+02:00" data-end="2026-09-30T12:20:00+02:00"><time class="time">12:07</time><div class="event-main"><h3 class="event-title">Reichstag · Platz der Republik</h3><p>Außenrunde · kein Eintritt · danach zu Fuß Richtung Brandenburger Tor</p><a class="action" href="https://www.google.com/maps/search/?api=1&amp;query=Reichstag+Berlin">KARTE ↗</a></div></li>
 <li class="event " data-start="2026-09-30T12:20:00+02:00" data-end="2026-09-30T12:35:00+02:00"><time class="time">12:20</time><div class="event-main"><h3 class="event-title">Brandenburger Tor → Unter den Linden</h3><p>Durchs Tor · Pariser Platz · Unter den Linden ostwärts bis U Unter den Linden</p><a class="action" href="https://www.google.com/maps/search/?api=1&amp;query=Brandenburger+Tor+Berlin">KARTE ↗</a></div></li>
-<li class="event " data-start="2026-09-30T12:35:00+02:00" data-end="2026-09-30T12:45:00+02:00"><time class="time">12:35</time><div class="event-main"><h3 class="event-title">U6 → Oranienburger Tor</h3><p>Richtung Kurt-Schumacher-Platz · 2 Stationen · via Friedrichstraße</p></div></li>
+<li class="event " data-start="2026-09-30T12:35:00+02:00" data-end="2026-09-30T12:45:00+02:00"><time class="time">12:35</time><div class="event-main"><h3 class="event-title"><span class="u-sign" aria-hidden="true">U</span>U6 → Oranienburger Tor</h3><p>Richtung Kurt-Schumacher-Platz · 2 Stationen · via Friedrichstraße</p></div></li>
 <li class="event " data-start="2026-09-30T12:45:00+02:00" data-end="2026-09-30T13:00:00+02:00"><time class="time">12:45</time><div class="event-main"><h3 class="event-title">Torstraße · echtes Mitte</h3><p>Oranienburger Tor → Torstr. 122 · einfach laufen, nicht suchen</p></div></li>
 <li class="event " data-start="2026-09-30T13:00:00+02:00" data-end="2026-09-30T13:20:00+02:00"><time class="time">13:00</time><div class="event-main"><h3 class="event-title">Curry Mitte</h3><p>Torstr. 122 · Currywurst + Pommes · Bier wenn’s passt</p><a class="action" href="https://www.google.com/maps/search/?api=1&amp;query=Curry+Mitte+Torstrasse+122+Berlin">KARTE ↗</a></div></li>
 <li class="event " data-start="2026-09-30T13:20:00+02:00" data-end="2026-09-30T13:35:00+02:00"><time class="time">13:20</time><div class="event-main"><h3 class="event-title">s.wert Designshop</h3><p>Brunnenstr. 191 · Berliner Design-Gimmick · max. 15 Min.</p><a class="action" href="https://www.google.com/maps/search/?api=1&amp;query=s.wert+Brunnenstrasse+191+Berlin">KARTE ↗</a></div></li>
-<li class="event critical" data-start="2026-09-30T13:35:00+02:00" data-end="2026-09-30T13:40:00+02:00"><time class="time">13:35</time><div class="event-main"><h3 class="event-title">LOS → M8 Rosenthaler Platz</h3><p>HARD CUT · ab jetzt kein weiterer Stopp</p></div></li>
+</ol></details></li>
+<li class="event critical hard-cut" data-start="2026-09-30T13:35:00+02:00" data-end="2026-09-30T13:40:00+02:00"><time class="time">13:35</time><div class="event-main"><h3 class="event-title">LOS → M8 Rosenthaler Platz</h3><p>HARD CUT · ab jetzt kein weiterer Stopp</p></div></li>
 <li class="event " data-start="2026-09-30T13:40:00+02:00" data-end="2026-09-30T13:55:00+02:00"><time class="time">13:40</time><div class="event-main"><h3 class="event-title">M8 → Hauptbahnhof</h3><p>Richtung S+U Hauptbahnhof · direkt bis Endstation</p></div></li>
 <li class="event critical" data-start="2026-09-30T13:55:00+02:00" data-end="2026-09-30T14:05:00+02:00"><time class="time">13:55</time><div class="event-main"><h3 class="event-title">Koffer holen</h3><p>1. OG · Bereich Gleis 13/14 · Schließfächer</p></div></li>
 <li class="event " data-start="2026-09-30T14:05:00+02:00" data-end="2026-09-30T14:30:00+02:00"><time class="time">14:05</time><div class="event-main"><h3 class="event-title"><img class="logo db" src="assets/db.svg" alt="DB">Gleis checken · zum ICE</h3><p>DB Navigator · ICE 1101 · ab jetzt keine Experimente mehr</p></div></li>
@@ -722,7 +790,7 @@ html[data-theme="light"]{
 (()=>{const A=window.BERLIN_AGENDA||[],$=s=>document.querySelector(s),fmt=t=>new Intl.DateTimeFormat("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"}).format(new Date(t));function left(ms){let m=Math.max(0,Math.ceil(ms/60000));if(m<120)return"in "+m+" Min.";let h=Math.floor(m/60);if(h<24)return"in "+h+" Std.";if(h<48)return"in 1 Tag";let d=Math.floor(h/24);return"in "+d+" Tagen"}function tick(){let n=window.__now(),cur=A.find(e=>n>=new Date(e.start)&&n<new Date(e.end)),next=A.find(e=>new Date(e.start)>n);$("#nowTitle").textContent=cur?cur.title:"Zwischen den Terminen";$("#nowDetail").textContent=cur?cur.detail:"Berlin // Reisemodus";if(cur&&cur.train){$("#nextTitle").textContent="Ankunft "+cur.title.split("→").pop().trim();$("#nextDetail").textContent="Ankunft "+cur.train.arrival+" · danach "+(next?next.title:"weiter");$("#count").textContent=left(new Date(cur.end)-n)}else if(next){let move=next.moveAt&&new Date(next.moveAt)>n&&new Date(next.moveAt)-n<45*60000;$("#nextTitle").textContent=(move?"LOS → ":"")+next.title;$("#nextDetail").textContent=next.detail+" · "+fmt(next.start);$("#count").textContent=left((move?new Date(next.moveAt):new Date(next.start))-n)}}function markEvents(){const n=window.__now();document.querySelectorAll(".event[data-start]").forEach(el=>{const s=new Date(el.dataset.start),e=new Date(el.dataset.end);el.classList.toggle("is-current",n>=s&&n<e);el.classList.toggle("is-past",n>=e)})}tick();markEvents();setInterval(()=>{tick();markEvents()},60000);if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js",{updateViaCache:"none"}).then(r=>r.update()).catch(()=>{})})();
 </script>
 <script>
-(()=>{const A=window.BERLIN_AGENDA||[],days=[["2026-09-28","Montag","28 SEP","mo"],["2026-09-29","Dienstag","29 SEP","di"],["2026-09-30","Mittwoch","30 SEP","mi"]],check="https://www.bahn.de/service/zug/komfort-check-in";const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));function logo(e){return e.brand==="db"?'<img class="logo db" src="assets/db.svg" alt="DB">':""}function renderEvent(e){let train=e.train?'<div class="trainmeta"><span>W'+esc(e.train.coach)+'</span><span>P'+esc(e.train.seat)+'</span><span>'+esc(e.train.zone)+'</span></div><p class="arrival">Ankunft '+esc(e.train.arrival)+'</p>':"";let action=e.action?'<a class="action" href="'+e.action.url+'">'+esc(e.action.label)+'</a>':"";if(e.checkin)action+='<a class="action" href="'+check+'">CHECK-IN ↗</a>';return '<li class="event '+(e.priority==="critical"?"critical":"")+'" data-start="'+e.start+'" data-end="'+e.end+'"><time class="time">'+new Date(e.start).toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"})+'</time><div class="event-main"><h3 class="event-title">'+logo(e)+esc(e.title)+'</h3>'+(e.detail?'<p>'+esc(e.detail)+'</p>':"")+train+action+'</div></li>'}const $=s=>document.querySelector(s),fmt=t=>new Intl.DateTimeFormat("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"}).format(new Date(t));function left(ms){let m=Math.max(0,Math.ceil(ms/60000));if(m<120)return"in "+m+" Min.";let hh=Math.floor(m/60);if(hh<24)return"in "+hh+" Std.";if(hh<48)return"in 1 Tag";let d=Math.floor(hh/24);return"in "+d+" Tagen"}function state(){let n=window.__now(),cur=A.find(e=>n>=new Date(e.start)&&n<new Date(e.end)),next=A.find(e=>new Date(e.start)>n);$("#nowTitle").textContent=cur?cur.title:"Zwischen den Terminen";$("#nowDetail").textContent=cur?cur.detail:"Berlin // Reisemodus";if(cur&&cur.train){$("#nextTitle").textContent="Ankunft "+cur.title.split("→").pop().trim();$("#nextDetail").textContent="Ankunft "+cur.train.arrival+" · danach "+(next?next.title:"weiter");$("#count").textContent=left(new Date(cur.end)-n)}else if(next){let move=next.moveAt&&new Date(next.moveAt)>n&&new Date(next.moveAt)-n<45*60000;$("#nextTitle").textContent=(move?"LOS → ":"")+next.title;$("#nextDetail").textContent=next.detail+" · "+fmt(next.start);$("#count").textContent=left((move?new Date(next.moveAt):new Date(next.start))-n)}document.querySelectorAll(".event").forEach(el=>{let s=new Date(el.dataset.start),e=new Date(el.dataset.end);el.classList.toggle("is-current",n>=s&&n<e);el.classList.toggle("is-past",n>=e)});let ds=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Berlin",year:"numeric",month:"2-digit",day:"2-digit"}).format(n);document.querySelectorAll(".daytab").forEach((x,i)=>x.classList.toggle("is-today",days[i][0]===ds));const jump=document.querySelector("#stickyNow");if(jump)jump.onclick=ev=>{ev.preventDefault();let target=document.querySelector(".event.is-current")||document.querySelector(".daytab.is-today")||document.querySelector("#nextTitle");target.scrollIntoView({behavior:"smooth",block:"center"})}}function stickyState(){const n=window.__now(),cur=A.find(e=>n>=new Date(e.start)&&n<new Date(e.end)),next=A.find(e=>new Date(e.start)>n);const mode=document.querySelector("#stickyMode"),title=document.querySelector("#stickyTitle"),cnt=document.querySelector("#stickyCount");if(cur){mode.textContent="JETZT";title.textContent=cur.title;cnt.textContent=""}else if(next){let move=next.moveAt&&new Date(next.moveAt)>n&&new Date(next.moveAt)-n<45*60000;mode.textContent=move?"LOS":"JETZT";title.textContent=next.title;cnt.textContent=left((move?new Date(next.moveAt):new Date(next.start))-n)}}state();stickyState();setInterval(()=>{state();stickyState()},60000);
+(()=>{const A=window.BERLIN_AGENDA||[],days=[["2026-09-28","Montag","28 SEP","mo"],["2026-09-29","Dienstag","29 SEP","di"],["2026-09-30","Mittwoch","30 SEP","mi"]],check="https://www.bahn.de/service/zug/komfort-check-in";const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));function logo(e){return e.brand==="db"?'<img class="logo db" src="assets/db.svg" alt="DB">':""}function uSign(e){return /^U\\d+\\s*→/.test(e.title)?'<span class="u-sign" aria-hidden="true">U</span>':""}function renderEvent(e){let train=e.train?'<div class="trainmeta"><span>W'+esc(e.train.coach)+'</span><span>P'+esc(e.train.seat)+'</span><span>'+esc(e.train.zone)+'</span></div><p class="arrival">Ankunft '+esc(e.train.arrival)+'</p>':"";let action=e.action?'<a class="action" href="'+e.action.url+'">'+esc(e.action.label)+'</a>':"";if(e.checkin)action+='<a class="action" href="'+check+'">CHECK-IN ↗</a>';return '<li class="event '+(e.priority==="critical"?"critical ":"")+(e.title==="LOS → M8 Rosenthaler Platz"?"hard-cut":"")+'" data-start="'+e.start+'" data-end="'+e.end+'"><time class="time">'+new Date(e.start).toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"})+'</time><div class="event-main"><h3 class="event-title">'+logo(e)+uSign(e)+esc(e.title)+'</h3>'+(e.detail?'<p>'+esc(e.detail)+'</p>':"")+train+action+'</div></li>'}const $=s=>document.querySelector(s),fmt=t=>new Intl.DateTimeFormat("de-DE",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Berlin"}).format(new Date(t));function left(ms){let m=Math.max(0,Math.ceil(ms/60000));if(m<120)return"in "+m+" Min.";let hh=Math.floor(m/60);if(hh<24)return"in "+hh+" Std.";if(hh<48)return"in 1 Tag";let d=Math.floor(hh/24);return"in "+d+" Tagen"}function state(){let n=window.__now(),cur=A.find(e=>n>=new Date(e.start)&&n<new Date(e.end)),next=A.find(e=>new Date(e.start)>n);$("#nowTitle").textContent=cur?cur.title:"Zwischen den Terminen";$("#nowDetail").textContent=cur?cur.detail:"Berlin // Reisemodus";if(cur&&cur.train){$("#nextTitle").textContent="Ankunft "+cur.title.split("→").pop().trim();$("#nextDetail").textContent="Ankunft "+cur.train.arrival+" · danach "+(next?next.title:"weiter");$("#count").textContent=left(new Date(cur.end)-n)}else if(next){let move=next.moveAt&&new Date(next.moveAt)>n&&new Date(next.moveAt)-n<45*60000;$("#nextTitle").textContent=(move?"LOS → ":"")+next.title;$("#nextDetail").textContent=next.detail+" · "+fmt(next.start);$("#count").textContent=left((move?new Date(next.moveAt):new Date(next.start))-n)}document.querySelectorAll(".event").forEach(el=>{let s=new Date(el.dataset.start),e=new Date(el.dataset.end);el.classList.toggle("is-current",n>=s&&n<e);el.classList.toggle("is-past",n>=e)});let ds=new Intl.DateTimeFormat("sv-SE",{timeZone:"Europe/Berlin",year:"numeric",month:"2-digit",day:"2-digit"}).format(n);document.querySelectorAll(".daytab").forEach((x,i)=>x.classList.toggle("is-today",days[i][0]===ds));const jump=document.querySelector("#stickyNow");if(jump)jump.onclick=ev=>{ev.preventDefault();let target=document.querySelector(".event.is-current")||document.querySelector(".daytab.is-today")||document.querySelector("#nextTitle");target.scrollIntoView({behavior:"smooth",block:"center"})}}function stickyState(){const n=window.__now(),cur=A.find(e=>n>=new Date(e.start)&&n<new Date(e.end)),next=A.find(e=>new Date(e.start)>n);const mode=document.querySelector("#stickyMode"),title=document.querySelector("#stickyTitle"),cnt=document.querySelector("#stickyCount");if(cur){mode.textContent="JETZT";title.textContent=cur.title;cnt.textContent=""}else if(next){let move=next.moveAt&&new Date(next.moveAt)>n&&new Date(next.moveAt)-n<45*60000;mode.textContent=move?"LOS":"JETZT";title.textContent=next.title;cnt.textContent=left((move?new Date(next.moveAt):new Date(next.start))-n)}}state();stickyState();setInterval(()=>{state();stickyState()},60000);
 const sticky=document.querySelector("#stickyBar");const hero=document.querySelector("h1");new IntersectionObserver(([e])=>{sticky.classList.toggle("is-visible",!e.isIntersecting);sticky.setAttribute("aria-hidden",e.isIntersecting?"true":"false")},{rootMargin:"-8px 0px 0px 0px",threshold:.05}).observe(hero);
 const tabs=[...document.querySelectorAll(".daytab")];
 const sections=[...document.querySelectorAll(".day")];
